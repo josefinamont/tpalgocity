@@ -263,11 +263,11 @@ public class Vista {
 		areaDeNotificaciones.setVisible(true);
 	 }
 		
-	public void cambiarAVistaIngresoPorTecladoNuevoJugador(Controlador controlador) {
+	public void cambiarAVistaIngresoPorTecladoNuevoJugador(final Controlador controlador) {
 		
 		JLabel headerLabel;
 		JLabel statusLabel;
-		TextField textField;
+		final TextField textField;
 		ventana.setLayout(new GridLayout(3, 1));
 	    ventana.remove(panelBotonesBienvenida);
 	    headerLabel = new JLabel();
