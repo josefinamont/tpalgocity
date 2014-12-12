@@ -11,7 +11,9 @@ public class Hectarea {
 	private Coordenada coordenada;
 	private transient ArrayList<MiniConstruccion> miniConstrucciones = new ArrayList<MiniConstruccion>();
 	private transient MegaConstruccion megaConstruccion;
-		
+	
+	public Hectarea(){}
+	
 	public Hectarea(Terreno tipoDeTerreno,Coordenada nuevaCoordenada) {
 		
 		this.megaConstruccion = null;

@@ -7,6 +7,8 @@ import algo3.algocity.modelo.mapa.Mapa;
 
 public class FabricaDeCatastrofes {
 
+	public FabricaDeCatastrofes() {};
+	
 	private Strategy obtenerEstrategiaAleatoria(Coordenada unaCoordenada, int ancho, int altura){
 		
 		Random random = new Random();
