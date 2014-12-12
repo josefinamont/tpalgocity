@@ -16,10 +16,6 @@ import algo3.algocity.modelo.mapa.Coordenada;
 import algo3.algocity.modelo.menu.Jugador;
 import algo3.algocity.vista.EstadoVistaMapaSuperficie;
 import algo3.algocity.vista.Vista;
-import algo3.algocity.vista.VistaMapaConBotones;
-import algo3.algocity.vista.VistaPaneElegirJugadorNuevo;
-import algo3.algocity.vista.VistaPanelElegirJugadorExistenteTeclado;
-import algo3.algocity.vista.VistaPanelNuevoJugadorExistente;
 
 	public class Controlador {
 		
@@ -156,22 +152,22 @@ import algo3.algocity.vista.VistaPanelNuevoJugadorExistente;
 
 	public ActionListener obtenerBotonComenzar() {
 
-		return new VistaMapaConBotones(this);
+		return new ConstruirPanelMapaConBotonesListener(this);
 	}
 
 	public ActionListener obtenerBienvenidaIniciar() {
 		
-		return new VistaPanelNuevoJugadorExistente(this);
+		return new ConstruirPanelNuevoJugadorExistenteListener(this);
 	}
 
 	public ActionListener obtenerConstruirElegirJugadorNuevoTecladoListener() {
 
-		return new VistaPaneElegirJugadorNuevo(this);
+		return new ConstruirPanelElegirJugadorNuevoListener(this);
 	}
 
 	public ActionListener obtenerConstruirJugadorexistenteTecladoListener() {
 		 
-		return new VistaPanelElegirJugadorExistenteTeclado(this);
+		return new ConstruirPanelElegirJugadorExistenteTecladoListener(this);
 	}
 
 	public ActionListener obtenerVolverABienvenidaListener() {
