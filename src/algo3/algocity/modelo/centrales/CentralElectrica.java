@@ -15,12 +15,12 @@ import algo3.algocity.modelo.mapa.Tierra;
 public abstract class CentralElectrica extends MegaConstruccion 
                 implements Dañable,Reparable,Entubable,Electrificable,Enrutable {
         
-        protected int abastecimientoEnMW;
-        protected int radioDeAbastecimientoEnHa;
-        protected Electrificable siguienteElectrificable,anteriorElectrificable;
-        protected Entubable siguienteEntubable;
-		protected Enrutable siguienteEnrutable;
-		protected ArrayList<Enrutable> enrutables;
+        protected transient int abastecimientoEnMW;
+        protected transient int radioDeAbastecimientoEnHa;
+        protected transient Electrificable siguienteElectrificable,anteriorElectrificable;
+        protected transient Entubable siguienteEntubable;
+		protected transient Enrutable siguienteEnrutable;
+		protected transient ArrayList<Enrutable> enrutables;
         
     public CentralElectrica() {
     	

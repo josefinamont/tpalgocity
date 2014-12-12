@@ -13,11 +13,11 @@ import algo3.algocity.modelo.interfaces.Reparable;
 
 public abstract class Edificio extends MegaConstruccion implements Dañable,Electrificable,Entubable,Reparable,Enrutable {
 
-	protected int consumoElectricoEnMW;
-	protected Entubable siguienteEntubable;
-	protected Electrificable siguienteElectrificable;
-	private Enrutable siguienteEnrutable;
-	protected ArrayList<Enrutable> enrutables;
+	protected transient int consumoElectricoEnMW;
+	protected transient Entubable siguienteEntubable;
+	protected transient Electrificable siguienteElectrificable;
+	private transient Enrutable siguienteEnrutable;
+	protected transient ArrayList<Enrutable> enrutables;
 	
 	public Edificio() {
 		

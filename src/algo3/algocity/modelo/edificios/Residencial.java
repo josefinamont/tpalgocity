@@ -13,13 +13,13 @@ import algo3.algocity.modelo.menu.Poblacion;
 
 public class Residencial extends Edificio {
 	
-	private int capacidadMaxima;
+	private transient int capacidadMaxima;
 	private Poblacion poblacionActual;
-	Comercial centroComercialAsociado;
+	transient Comercial centroComercialAsociado;
 	private Poblacion cantidadDePoblacionNoLaboral;
-	private ArrayList<IndiceDeFelicidad> indicesDeFelicidad;
+	private transient ArrayList<IndiceDeFelicidad> indicesDeFelicidad;
 	private IndiceDeFelicidad indice;
-	private ArrayList<Industrial> industriasDondeTrabajan;
+	private transient ArrayList<Industrial> industriasDondeTrabajan;
 	
 	public Residencial(){
 		

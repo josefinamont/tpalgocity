@@ -13,13 +13,13 @@ import algo3.algocity.modelo.interfaces.*;
 
 public class Mapa {
 
-	private int ancho;
-	private int altura;
-	private ArrayList<ArrayList<Hectarea>> mapa = new ArrayList<ArrayList<Hectarea>>();
-	private ArrayList<MiniConstruccion> miniConstrucciones = new ArrayList<MiniConstruccion>(); 
-	private ArrayList<MegaConstruccion> megaConstrucciones = new ArrayList<MegaConstruccion>(); 
-	private ArrayList<EstacionDeBomberos> bomberos = new ArrayList<EstacionDeBomberos>();
-	private ArrayList<PozoDeAgua> pozos = new ArrayList<PozoDeAgua>();
+	private transient int ancho;
+	private transient int altura;
+	private transient ArrayList<ArrayList<Hectarea>> mapa = new ArrayList<ArrayList<Hectarea>>();
+	private transient ArrayList<MiniConstruccion> miniConstrucciones = new ArrayList<MiniConstruccion>(); 
+	private transient ArrayList<MegaConstruccion> megaConstrucciones = new ArrayList<MegaConstruccion>(); 
+	private transient ArrayList<EstacionDeBomberos> bomberos = new ArrayList<EstacionDeBomberos>();
+	private transient ArrayList<PozoDeAgua> pozos = new ArrayList<PozoDeAgua>();
 	private Coordenada coordenadaDeLaCatastrofe;
 	private Catastrofe catastrofe;
 	private boolean estadoMovimientoCatastrofe;

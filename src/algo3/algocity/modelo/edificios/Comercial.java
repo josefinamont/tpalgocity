@@ -11,9 +11,9 @@ import algo3.algocity.modelo.menu.Poblacion;
 
 public class Comercial extends Edificio {
 	
-	private int capacidadMaximaDePersonas;
+	private transient int capacidadMaximaDePersonas;
 	private Poblacion cantidadDeClientesActual;
-	private ArrayList<Residencial> residenciasQueMeVisitan;
+	private transient ArrayList<Residencial> residenciasQueMeVisitan;
 	
 	public Comercial() {
 		

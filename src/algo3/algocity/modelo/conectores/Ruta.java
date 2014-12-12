@@ -12,8 +12,8 @@ import algo3.algocity.modelo.mapa.Mapa;
 
 public class Ruta extends MiniConstruccion implements Dañable,Enrutable {
 	
-	private Entubable siguienteConectable;
-	private Enrutable siguienteEnrutable;
+	private transient Entubable siguienteConectable;
+	private transient Enrutable siguienteEnrutable;
 
 	public Ruta() {
 		
