@@ -5,6 +5,8 @@ public class Coordenada {
 	private int posicionY; 
 	private int posicionX;	
 	
+	public Coordenada() {}
+	
 	public Coordenada(int posicionY,int posicionX) {
 		
 		this.posicionY = posicionY;

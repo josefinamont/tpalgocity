@@ -12,6 +12,8 @@ public class Fachada {
 
 	private Jugador unJugador;
 	
+	public Fachada(){};
+	
 	public Fachada(Jugador jugador){
 		
 		this.unJugador = jugador;
