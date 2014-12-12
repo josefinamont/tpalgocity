@@ -17,11 +17,11 @@ import algo3.algocity.modelo.mapa.Mapa;
 
 public class EstacionDeBomberos extends MegaConstruccion implements Entubable,Electrificable,Enrutable {
 
-	private int costo;
-	private Entubable siguienteEntubable;
-	private Electrificable siguienteElectrificable,anteriorElectrificable;
-	private Enrutable siguienteEnrutable;
-	protected ArrayList<Enrutable> enrutables;
+	private transient int costo;
+	private transient Entubable siguienteEntubable;
+	private transient Electrificable siguienteElectrificable,anteriorElectrificable;
+	private transient Enrutable siguienteEnrutable;
+	protected transient ArrayList<Enrutable> enrutables;
 	
 	public EstacionDeBomberos() {
 		

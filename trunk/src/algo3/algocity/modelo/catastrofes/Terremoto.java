@@ -15,7 +15,7 @@ import algo3.algocity.modelo.mapa.Mapa;
 public class Terremoto implements Catastrofe {
 	
 	private Hectarea hectareaALaQuePertenece;
-	private int duracionEnTurnos;
+	private transient int duracionEnTurnos;
 	
 	public Terremoto() {
 		

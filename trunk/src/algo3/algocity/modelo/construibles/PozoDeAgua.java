@@ -16,7 +16,7 @@ import algo3.algocity.modelo.mapa.Mapa;
 
 public class PozoDeAgua extends MegaConstruccion implements Entubable {
 
-	private  transient Entubable siguienteEntubable;
+	private transient Entubable siguienteEntubable;
 	
 	public PozoDeAgua() {
 		

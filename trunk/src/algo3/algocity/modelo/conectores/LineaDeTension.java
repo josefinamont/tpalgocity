@@ -11,8 +11,8 @@ import algo3.algocity.modelo.mapa.*;
 
 public class LineaDeTension extends MiniConstruccion implements Dañable,Electrificable {
 
-	private Electrificable siguienteElectrificable,anteriorElectrificable;	
-	private Terreno superficieDeConstruccion;
+	private transient Electrificable siguienteElectrificable,anteriorElectrificable;	
+	private transient Terreno superficieDeConstruccion;
 	
 	public LineaDeTension(){
 		

@@ -2,7 +2,7 @@ package algo3.algocity.modelo.mapa;
 
 public abstract class Terreno {
 
-	protected String suelo;
+	protected  String suelo;
 	
 	public String obtenerTipoDeSuelo(){
 		

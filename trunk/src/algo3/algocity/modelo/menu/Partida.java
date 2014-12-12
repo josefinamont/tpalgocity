@@ -19,8 +19,8 @@ public class Partida extends TimerTask {
 	private Mapa mapa;
 	private Poblacion poblacionGlobal;
 	private int turnos;
-	private FabricaDeCatastrofes fabricaDeCatastrofes;
-	private Controlador controlador;
+	private transient FabricaDeCatastrofes fabricaDeCatastrofes;
+	private transient Controlador controlador;
 	private int indiceDeFelicidadGlobal;
 	
 	public Partida(){

@@ -11,11 +11,11 @@ import algo3.algocity.modelo.menu.Poblacion;
 
 public class Industrial extends Edificio {
 	
-	private int maximoDePersonasAEmplearPorHA;
+	private transient int maximoDePersonasAEmplearPorHA;
 	private int cantidadDeEmpleados;
 	private int cantidadDeVacantes;
-	private ArrayList<Residencial> residenciasEmpleados;
-	private String indiceDeFelicidadQueAportaASusEmpleados;
+	private transient ArrayList<Residencial> residenciasEmpleados;
+	private transient String indiceDeFelicidadQueAportaASusEmpleados;
 	
 	public Industrial() {
 		

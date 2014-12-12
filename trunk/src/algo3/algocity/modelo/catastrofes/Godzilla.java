@@ -14,7 +14,7 @@ import algo3.algocity.modelo.mapa.Mapa;
 
 public class Godzilla implements Catastrofe {
 	
-	private int tamañoEnHa;
+	private transient int tamañoEnHa;
 	private int[] patronDeMovimiento;
 	
 	public Godzilla(Strategy estrategia) {

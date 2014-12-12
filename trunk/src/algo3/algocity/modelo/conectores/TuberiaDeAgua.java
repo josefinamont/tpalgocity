@@ -19,7 +19,7 @@ import algo3.algocity.modelo.mapa.Mapa;
 
 public class TuberiaDeAgua extends MiniConstruccion implements Entubable,Dañable  {
 
-	private Entubable siguienteEntubable;
+	private transient Entubable siguienteEntubable;
 	
 	public TuberiaDeAgua(){
 		
