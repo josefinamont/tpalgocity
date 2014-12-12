@@ -26,6 +26,7 @@ public class VistaPanelBienvenida extends JPanel  {
 		this.add(botonBienvenidaIniciar);
 		
 		JButton botonContinuarPartida = new JButton("Continuar Partida");
+		botonContinuarPartida.addActionListener(controlador.obtenerConstruirJugadorexistenteTecladoListener());
 		this.add(botonContinuarPartida);
 		
 		JButton botonVerPuntajes = new JButton("Ver Puntajes");
