@@ -15,6 +15,7 @@ public class ClickSobreElMapaListener implements MouseListener {
 	private Controlador controlador;
 	private Mapa mapa;
 	
+	
 	public ClickSobreElMapaListener(Controlador controlador,Mapa mapa){
 		
 		this.controlador = controlador;
