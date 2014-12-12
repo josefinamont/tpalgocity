@@ -21,7 +21,7 @@ public class VistaPanelElegirJugadorNuevoTeclado extends JPanel{
 	public VistaPanelElegirJugadorNuevoTeclado(final Controlador controlador){
 	
 		   JLabel ingreseNombre;
-		   JLabel statusLabel;
+		   final JLabel statusLabel;
 		   final TextField textField;
 		   JLabel titulo = new JLabel("Algo City");
 		   titulo.setFont(new java.awt.Font("Verdana", 0, 100));;

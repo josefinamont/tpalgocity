@@ -7,10 +7,10 @@ import algo3.algocity.modelo.interfaces.MiniConstruccion;
 
 public class Hectarea {
 	
-	private Terreno tipoDeTerreno;
+	private transient Terreno tipoDeTerreno;
 	private Coordenada coordenada;
-	private ArrayList<MiniConstruccion> miniConstrucciones = new ArrayList<MiniConstruccion>();
-	private MegaConstruccion megaConstruccion;
+	private transient ArrayList<MiniConstruccion> miniConstrucciones = new ArrayList<MiniConstruccion>();
+	private transient MegaConstruccion megaConstruccion;
 		
 	public Hectarea(Terreno tipoDeTerreno,Coordenada nuevaCoordenada) {
 		

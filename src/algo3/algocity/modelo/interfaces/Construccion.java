@@ -12,10 +12,10 @@ import algo3.algocity.modelo.mapa.Tierra;
 public abstract class Construccion {
 	
 	protected int porcentajeDeVida;
-	protected Terreno tipoDeTerreno;
-	protected int radioDeAbastecimientoEnHa;
+	protected transient Terreno tipoDeTerreno;
+	protected transient int radioDeAbastecimientoEnHa;
 	protected Hectarea hectareaALaQuePertenece;
-	protected int costo;
+	protected transient int costo;
 
 	public Construccion(){
 		
