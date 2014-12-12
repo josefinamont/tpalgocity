@@ -27,15 +27,15 @@ import javax.swing.JLabel;
      
 	 if(e.getKeyCode() == KeyEvent.VK_ENTER){
             
-		 if(textField.getText() == null){
+		 if(textField.getText().trim().length() != 0){
 
-           	controlador.obtenerVista().setPanelVistaMapaConBotones(controlador);
-           	controlador.agregarJugadorAFachadas(textField.getText());
-          }
-          else{
-            	
-           	statusLabel.setText("Entered text: "+ textField.getText());
-           }
+       	  	 controlador.agregarJugadorAFachadas(textField.getText());
+       	  	 controlador.obtenerVista().setPanelVistaMapaConBotones(controlador);
+	      }
+	      else{
+		            	
+             statusLabel.setText("Ingrese un nombre");
+         }
         }
  }
 
