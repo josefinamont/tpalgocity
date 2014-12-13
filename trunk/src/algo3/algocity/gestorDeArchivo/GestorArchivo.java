@@ -21,7 +21,7 @@ import java.util.Scanner;
 		directorio.mkdir();
 	}
 	
-	public ArrayList<String> convertir(String nombreCarpeta,String nombreArchivo){
+	public ArrayList<String> levantar(String nombreCarpeta,String nombreArchivo){
 		
 		ArrayList<String> retorno = new ArrayList<String>();
 		
