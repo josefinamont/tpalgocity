@@ -154,6 +154,13 @@ public abstract class Edificio extends MegaConstruccion implements Dañable,Elect
 		
 		return true;
 	}
+	
+	public boolean esUnaConstruccionEnergetica(){
+		
+		return false;
+	}
     
+	public abstract boolean tieneEmpleo();
+		
 }
    

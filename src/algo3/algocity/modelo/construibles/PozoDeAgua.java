@@ -101,6 +101,11 @@ public class PozoDeAgua extends MegaConstruccion implements Entubable {
 		
 		unMapa.construirPozoDeAgua(this,lugarDeConstruccion);
 	}
+	
+	public boolean esUnaConstruccionEnergetica(){
+		
+		return false;
+	}
 
 }
 

@@ -12,4 +12,6 @@ public abstract class MegaConstruccion extends Construccion {
 		
 		unMapa.construirMegaConstruccion(this,lugarDeConstruccion);
 	}
+	
+	public abstract boolean esUnaConstruccionEnergetica();
 }

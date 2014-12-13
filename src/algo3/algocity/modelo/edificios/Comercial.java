@@ -84,6 +84,10 @@ public class Comercial extends Edificio {
 		   return new Comercial();
 	   }
 
+	 public boolean tieneEmpleo(){
+		 
+		 return false;
+	 }
 	
  public void dibujarse(Graphics g,Coordenada coordenadaDimensionada) {
 	

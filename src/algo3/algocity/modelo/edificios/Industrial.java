@@ -99,6 +99,11 @@ public class Industrial extends Edificio {
 		   
 		   return new Industrial();
 	   }
+	
+	public boolean tieneEmpleo(){
+		
+		return true;
+	}
 
 	public void dibujarse(Graphics g,Coordenada coordenadaDimensionada) {
 	

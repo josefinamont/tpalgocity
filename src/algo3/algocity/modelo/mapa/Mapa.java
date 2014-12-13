@@ -20,6 +20,7 @@ public class Mapa {
 	private transient ArrayList<MegaConstruccion> megaConstrucciones = new ArrayList<MegaConstruccion>(); 
 	private transient ArrayList<EstacionDeBomberos> bomberos = new ArrayList<EstacionDeBomberos>();
 	private transient ArrayList<PozoDeAgua> pozos = new ArrayList<PozoDeAgua>();
+
 	private Coordenada coordenadaDeLaCatastrofe;
 	private transient Catastrofe catastrofe;
 	private boolean estadoMovimientoCatastrofe;

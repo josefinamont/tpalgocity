@@ -21,4 +21,9 @@ public class PersistirComercial {
 		 return comercial;
 	}
 
+	public String obtenerSerializacion() {
+		
+		return representacionJSON;
+	}
+
 }

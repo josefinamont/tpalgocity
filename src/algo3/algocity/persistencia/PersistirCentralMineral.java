@@ -20,4 +20,9 @@ public class PersistirCentralMineral {
 				
 		 return central;
 	}
+
+	public String obtenerSerializazion() {
+		
+		return representacionJSON;
+	}
 }

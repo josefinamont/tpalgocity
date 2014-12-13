@@ -201,9 +201,14 @@ public class EstacionDeBomberos extends MegaConstruccion implements Entubable,El
 		return this.siguienteEnrutable;
 	}
 	
-public boolean estaConectadoAUnEnrutable(){
+	public boolean estaConectadoAUnEnrutable(){
 		
 		return (this.siguienteEnrutable != null);
+	}
+	
+	public boolean esUnaConstruccionEnergetica(){
+		
+		return false;
 	}
 
 }
