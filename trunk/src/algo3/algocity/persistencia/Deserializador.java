@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import algo3.algocity.gestorDeArchivo.GestorArchivo;
 import algo3.algocity.modelo.Fachada;
 import algo3.algocity.modelo.construibles.EstacionDeBomberos;
+import algo3.algocity.modelo.construibles.PozoDeAgua;
 import algo3.algocity.modelo.edificios.Comercial;
 import algo3.algocity.modelo.edificios.Industrial;
 import algo3.algocity.modelo.edificios.Residencial;
 import algo3.algocity.modelo.excepciones.NoSePuedeEdificarEnEsaZonaException;
 import algo3.algocity.modelo.menu.Jugador;
+import algo3.algocity.modelo.menu.Partida;
 
 public class Deserializador {
 
@@ -34,6 +36,18 @@ public class Deserializador {
 			jugadorDeserializado = persistidor.deserializar(jugadorActual);		
 		}
 		this.fachada.definirJugador(jugadorDeserializado);
+	}
+	
+	public void deserializarPartida(){
+		
+		ArrayList<String> partida = new ArrayList<String>();
+		partida = gestorDeArchivo.levantar(nombreDelJugador,"partida");
+		PersistirPartida persistidor = new PersistirPartida();
+		Partida partidaDeserealizada = null;
+		for (String partidaActual: partida){
+			partidaDeserealizada = persistidor.deserializar(partidaActual);		
+		}
+		this.fachada.obtenerJugador().definirPartida(partidaDeserealizada);
 	}
 	
 	public void deserializarResidenciales() throws NoSePuedeEdificarEnEsaZonaException{
@@ -84,4 +98,26 @@ public class Deserializador {
 		}
 	}
 	
+	public void deserializarPozos() throws NoSePuedeEdificarEnEsaZonaException{
+		
+		ArrayList<String> pozos = new ArrayList<String>();
+		pozos = gestorDeArchivo.levantar(nombreDelJugador,"bomberos");
+		PersistirPozoDeAgua persistidor = new PersistirPozoDeAgua();
+		PozoDeAgua pozoDeAguaDeserializado = null;
+		for (String pozoDeAgua: pozos){
+			pozoDeAguaDeserializado = persistidor.deserializar(pozoDeAgua);	
+			fachada.jugadorConstruir(pozoDeAguaDeserializado,pozoDeAguaDeserializado.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+		}
+	}
+	
+	public void deserealizarTodo() throws NoSePuedeEdificarEnEsaZonaException{
+		
+		this.deserializarJugador();
+		this.deserializarPartida();
+		this.deserializarResidenciales();
+		this.deserializarPozos();
+		this.deserializarBomberos();
+		this.deserializarComerciales();
+		this.deserializarIndustriales();
+	}
 }
