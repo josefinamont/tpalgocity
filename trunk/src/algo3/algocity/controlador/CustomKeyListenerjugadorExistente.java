@@ -31,6 +31,7 @@ import javax.swing.JLabel;
 
        	  	 controlador.agregarJugadorAFachadas(textField.getText());
        	  	 controlador.obtenerVista().setPanelVistaMapaConBotones(controlador);
+       	  	 //controlador.jugadorEstaEnLaLista(textField.getText());
 	      }
 	      else{
 		            	

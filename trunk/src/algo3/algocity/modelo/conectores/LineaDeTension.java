@@ -79,7 +79,6 @@ public class LineaDeTension extends MiniConstruccion implements Dañable,Electrif
 
    public boolean conectarseA(Electrificable unElectrificable){
    	
-	   
    	  return true;
    }
    
