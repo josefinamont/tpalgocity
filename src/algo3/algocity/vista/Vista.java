@@ -258,7 +258,6 @@ public class Vista {
 		
 	 public void notificaUsuario(String mensaje){
 			
-		System.out.println(mensaje);
 		areaDeNotificaciones.setText(mensaje);
 		areaDeNotificaciones.setVisible(true);
 	 }
