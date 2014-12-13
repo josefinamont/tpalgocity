@@ -26,5 +26,6 @@ public class GuardarPartidaListener extends ControladorListener {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		controlador.obtenerVista().volverAPanelBienvenida(controlador);
 	}
 }
