@@ -37,9 +37,10 @@ import algo3.algocity.vista.Vista;
 	
 	public void construirEnElMapa(Coordenada coordenada) throws NoSePuedeEdificarEnEsaZonaException{
 		
-		if(this.construccionAConstruir != null)
+		if(this.construccionAConstruir != null){
 			this.fachadaActual.jugadorConstruir(this.construccionAConstruir.generarNuevaInstancia(), coordenada);
 		 	this.notificarUsuario("Construccion exitosa.");
+		 }
 	}
 	
 	public void definirPanelVista(JPanel panel){
@@ -240,6 +241,7 @@ import algo3.algocity.vista.Vista;
 		}
 		
 		nombresJugadoresExistentesLabel.setText(dato);
+		//nombresJugadoresExistentesLabel.setText("hola");
 	}
 
 	/*public void agregarJugadorNuevo(String nombreDelJugador) {
