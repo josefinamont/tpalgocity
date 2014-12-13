@@ -31,6 +31,12 @@ public class PersistenciaDelJuego {
 		this.fachada = fachada;
 		this.gestorArchivo = new GestorArchivo();
 		this.gestorArchivo.crearCarpeta(this.fachada.obtenerJugador().obtenerNombre());
+		this.miniConstruccionesSerializadas = new ArrayList<String>();
+		this.megaConstruccionesSerializadas = new ArrayList<String>();
+		this.bomberosSerializados = new ArrayList<String>();
+		this.pozosSerializados = new ArrayList<String>();
+		this.jugadorSerializado = new ArrayList<String>();
+		this.partidaSerializada = new ArrayList<String>();
 	}
 	
 	public void persistirJugador() throws FileNotFoundException{
@@ -58,21 +64,21 @@ public class PersistenciaDelJuego {
 				if (miniConstruccion.conectarseA(unElectrificable)) { 
 					PersistirLineaDeTension persistidor = new PersistirLineaDeTension();
 					persistidor.serializar((LineaDeTension) miniConstruccion);
-					this.megaConstruccionesSerializadas.add(persistidor.obtenerSerializacion());
+					this.miniConstruccionesSerializadas.add(persistidor.obtenerSerializacion());
 				}
 				
 				Entubable unEntubable = null;
 				if (miniConstruccion.conectarseA(unEntubable)) { 
 					PersistirTuberiaDeAgua persistidor = new PersistirTuberiaDeAgua();
 					persistidor.serializar((TuberiaDeAgua) miniConstruccion);
-					this.megaConstruccionesSerializadas.add(persistidor.obtenerSerializacion());
+					this.miniConstruccionesSerializadas.add(persistidor.obtenerSerializacion());
 				}
 				
 				Enrutable unEnrutable = null;
 				if (miniConstruccion.conectarseA(unEnrutable)) { 
 					PersistirRuta persistidor = new PersistirRuta();
 					persistidor.serializar((Ruta) miniConstruccion);
-					this.megaConstruccionesSerializadas.add(persistidor.obtenerSerializacion());
+					this.miniConstruccionesSerializadas.add(persistidor.obtenerSerializacion());
 				}
 			}
 			this.gestorArchivo.guardar(this.miniConstruccionesSerializadas,this.fachada.obtenerJugador().obtenerNombre(),"miniconstrucciones");
