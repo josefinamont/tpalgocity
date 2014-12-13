@@ -16,7 +16,9 @@ public class ConstruirBomberosListener extends ControladorListener {
 		
 		MegaConstruccion estacionDeBomberos = new EstacionDeBomberos();
 		controlador.notificarUsuario("Contruir estacion de bomberos. Precio: $" + estacionDeBomberos.costo() + ".");
-		controlador.definirSiguienteConstruccionAConstruir(estacionDeBomberos);
-		controlador.obtenerVista().cambiarAVistaSuperficie();
+		if (controlador.obtenerFachada().obtenerJugador().dinero() >= estacionDeBomberos.costo()) {
+			controlador.definirSiguienteConstruccionAConstruir(estacionDeBomberos);
+			controlador.obtenerVista().cambiarAVistaSuperficie();
+		} else controlador.notificarUsuario("No tiene dinero suficiente para construir lo requerido");
 	}
 }

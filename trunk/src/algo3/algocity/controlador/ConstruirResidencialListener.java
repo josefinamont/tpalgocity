@@ -16,8 +16,10 @@ public class ConstruirResidencialListener extends ControladorListener{
 		
 		MegaConstruccion residencia = new Residencial();
 		controlador.notificarUsuario("Construir zona residencial. Precio: $" + residencia.costo() + ".");
-		controlador.definirSiguienteConstruccionAConstruir(residencia);
-		controlador.obtenerVista().cambiarAVistaSuperficie();
+		if (controlador.obtenerFachada().obtenerJugador().dinero() >= residencia.costo()) {
+			controlador.definirSiguienteConstruccionAConstruir(residencia);
+			controlador.obtenerVista().cambiarAVistaSuperficie();
+		} else controlador.notificarUsuario("No tiene dinero suficiente para construir lo requerido");
 	}	
 }
 

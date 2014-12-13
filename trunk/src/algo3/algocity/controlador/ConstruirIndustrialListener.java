@@ -16,7 +16,9 @@ public class ConstruirIndustrialListener extends ControladorListener{
 		
 		MegaConstruccion industria = new Industrial();
 		controlador.notificarUsuario("Construir zona industrial. Precio: $" + industria.costo() + ".");
-		controlador.definirSiguienteConstruccionAConstruir(industria);
-		controlador.obtenerVista().cambiarAVistaSuperficie();
+		if (controlador.obtenerFachada().obtenerJugador().dinero() >= industria.costo()) {
+			controlador.definirSiguienteConstruccionAConstruir(industria);
+			controlador.obtenerVista().cambiarAVistaSuperficie();
+		} else controlador.notificarUsuario("No tiene dinero suficiente para construir lo requerido");
 	}
 }
