@@ -1,8 +1,6 @@
 package algo3.algocity.vista;
 
-import java.awt.Button;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.TextField;
@@ -16,7 +14,6 @@ import javax.swing.JPanel;
 
 import algo3.algocity.controlador.Controlador;
 import algo3.algocity.controlador.CustomKeyListenerjugadorExistente;
-import algo3.algocity.controlador.CustomKeyListenerjugadorNuevo;
 import algo3.algocity.modelo.excepciones.NoSePuedeEdificarEnEsaZonaException;
 import algo3.algocity.persistencia.Deserializador;
 
@@ -76,7 +73,6 @@ public class VistaPanelJugadorExistenteTeclado extends JPanel{
 					} catch (NoSePuedeEdificarEnEsaZonaException e1) {
 						e1.printStackTrace();
 					}
-	    			  //controlador.setPanelVistaMapaConBotones();
 	    		  } else { statusLabel.setText("Ingrese un nombre"); } 	  
 	    	}
 	       } 

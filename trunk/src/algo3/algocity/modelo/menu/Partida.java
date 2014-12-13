@@ -203,6 +203,17 @@ public class Partida extends TimerTask {
 		return this.indiceDeFelicidadGlobal;
 	}
 
+	public void setTurnos(int turnos) {
+	
+		this.turnos = turnos;
+	}
+
+	public void setPoblacionGlobal(int poblacion) {
+	
+		this.setearPoblacion(poblacion);
+		
+	}
+
 	public void definirMapa(Mapa unMapa) {
 		
 		this.mapa = unMapa;

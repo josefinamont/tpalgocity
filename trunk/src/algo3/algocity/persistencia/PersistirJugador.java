@@ -2,12 +2,7 @@ package algo3.algocity.persistencia;
 
 import algo3.algocity.modelo.menu.Jugador;
 
-import com.google.gson.Gson;
-
-public class PersistirJugador {
-
-	Gson gson = new Gson();
-	String representacionJSON; 
+public class PersistirJugador extends Persistir {
 	
 	public void serializar(Jugador jugadorAserializar){
 		
@@ -21,9 +16,5 @@ public class PersistirJugador {
 		 return jugador;
 	}
 
-	public String obtenerSerializacion() {
-		
-		return this.representacionJSON;
-	}
-
+	
 }

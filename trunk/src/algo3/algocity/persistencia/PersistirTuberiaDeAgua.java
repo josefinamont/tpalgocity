@@ -1,14 +1,8 @@
 package algo3.algocity.persistencia;
 
-
 import algo3.algocity.modelo.conectores.TuberiaDeAgua;
 
-import com.google.gson.Gson;
-
-public class PersistirTuberiaDeAgua {
-
-	Gson gson = new Gson();
-	String representacionJSON; 
+public class PersistirTuberiaDeAgua extends Persistir{
 	
 	public void serializar(TuberiaDeAgua partidaASerializar){
 		
@@ -21,10 +15,5 @@ public class PersistirTuberiaDeAgua {
 			
 		 return tuberia;
 	}
-	
-	public String obtenerSerializacion() {
-		
-		return this.representacionJSON;
-	}
-	
+
 }

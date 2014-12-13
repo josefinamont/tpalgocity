@@ -2,12 +2,8 @@ package algo3.algocity.persistencia;
 
 import algo3.algocity.modelo.centrales.CentralEolica;
 
-import com.google.gson.Gson;
+public class PersistirCentralEolica extends Persistir {
 
-public class PersistirCentralEolica {
-
-	Gson gson = new Gson();
-	String representacionJSON; 
 	
 	public void serializar(CentralEolica centralEolicaAserializar){
 		
@@ -19,11 +15,6 @@ public class PersistirCentralEolica {
 		 CentralEolica central = gson.fromJson(objetoSerializado,CentralEolica.class);
 			
 		 return central;
-	}
-
-	public String obtenerSerializazion() {
-		
-		return representacionJSON;
 	}
 
 }

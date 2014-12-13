@@ -29,9 +29,6 @@ public class VistaPanelBienvenida extends JPanel  {
 		botonContinuarPartida.addActionListener(controlador.obtenerConstruirJugadorexistenteTecladoListener());
 		this.add(botonContinuarPartida);
 		
-		JButton botonVerPuntajes = new JButton("Ver Puntajes");
-		this.add(botonVerPuntajes);
-		
 		JButton botonSalir = new JButton("Salir");
 		botonSalir.addActionListener(controlador.obtenerSalirListener());
 		this.add(botonSalir);
@@ -40,7 +37,6 @@ public class VistaPanelBienvenida extends JPanel  {
 		this.getComponent(1).setBounds(550, 300, 150, 50);
 		this.getComponent(2).setBounds(550, 375, 150, 50);
 		this.getComponent(3).setBounds(550, 450, 150, 50);
-		this.getComponent(4).setBounds(550, 525, 150, 50);
 	}
 	
 	protected  void paintComponent(Graphics g){

@@ -2,12 +2,7 @@ package algo3.algocity.persistencia;
 
 import algo3.algocity.modelo.mapa.Mapa;
 
-import com.google.gson.Gson;
-
-public class PersistirMapa {
-
-	Gson gson = new Gson();
-	String representacionJSON; 
+public class PersistirMapa extends Persistir{
 	
 	public void serializar(Mapa mapaASerializar){
 		
@@ -21,8 +16,4 @@ public class PersistirMapa {
 		 return mapa;
 	}
 	
-	public String obtenerSerializacion() {
-		
-		return this.representacionJSON;
-	}
 }
