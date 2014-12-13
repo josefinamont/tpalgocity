@@ -209,7 +209,7 @@ public class Vista {
 		panelBotones.add(labelControles);
 	
 		JButton botonGuardarPartida = new JButton("Guardar partida");
-		botonGuardarPartida.addActionListener(controlador.obtenerGuardarPartidaListener());
+		botonGuardarPartida.addActionListener(controlador.obtenerGuardarPartidaListener(timer));
 		panelBotones.add(botonGuardarPartida);
 		
 		JButton botonVolver = new JButton("Volver");

@@ -3,18 +3,15 @@ package algo3.algocity.controlador;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Timer;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import algo3.algocity.modelo.Fachada;
 import algo3.algocity.modelo.excepciones.NoSePuedeEdificarEnEsaZonaException;
 import algo3.algocity.modelo.interfaces.Construccion;
-import algo3.algocity.modelo.interfaces.MegaConstruccion;
-import algo3.algocity.modelo.interfaces.MiniConstruccion;
 import algo3.algocity.modelo.mapa.Coordenada;
 import algo3.algocity.modelo.menu.Jugador;
-import algo3.algocity.vista.EstadoVistaMapaSuperficie;
 import algo3.algocity.vista.Vista;
 
 	public class Controlador {
@@ -125,9 +122,9 @@ import algo3.algocity.vista.Vista;
 		return new ConstruirBomberosListener(this);
 	}
 	
-	public ActionListener obtenerGuardarPartidaListener() {
+	public ActionListener obtenerGuardarPartidaListener(Timer timer) {
 		
-		return new GuardarPartidaListener(this);
+		return new GuardarPartidaListener(this,timer);
 	}
 	
 	public ActionListener obtenerVistaSuperficieListener(){
