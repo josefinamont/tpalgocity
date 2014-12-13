@@ -20,4 +20,9 @@ public class PersistirEstacionDeBomberos {
 				
 		 return central;
 	}
+
+	public String obtenerSerializacion() {
+		
+		return this.representacionJSON;
+	}
 }
