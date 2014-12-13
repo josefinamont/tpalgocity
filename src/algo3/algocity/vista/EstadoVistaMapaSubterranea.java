@@ -16,7 +16,6 @@ public class EstadoVistaMapaSubterranea implements EstadoVistaMapa {
 	Dibujante dibujante = new Dibujante();
 	
 	public void dibujar(Graphics graphics, Mapa mapa) {
-		System.out.println("entro aldibujar");
 		dibujarTerreno(graphics);
 		dibujarAgua(graphics, mapa);
 		dibujarGrilla(graphics, mapa);

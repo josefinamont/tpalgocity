@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import algo3.algocity.gestorDeArchivo.GestorArchivo;
 import algo3.algocity.modelo.Fachada;
+import algo3.algocity.modelo.catastrofes.Godzilla;
+import algo3.algocity.modelo.catastrofes.Terremoto;
 import algo3.algocity.modelo.centrales.CentralEolica;
 import algo3.algocity.modelo.centrales.CentralMineral;
 import algo3.algocity.modelo.centrales.CentralNuclear;
@@ -302,6 +304,34 @@ public class Deserializador {
 		  }
 	}
 	
+	public void deserializarGodzilla(){
+		
+		ArrayList<String> godzilla = new ArrayList<String>();
+		godzilla = gestorDeArchivo.levantar(nombreDelJugador,"godzilla");
+		if (godzilla != null) {
+			PersistirGodzilla persistidor = new PersistirGodzilla();
+			Godzilla godzillaDeserializado = null;
+			for (String godzillaActual: godzilla){
+				godzillaDeserializado = persistidor.deserializar(godzillaActual);		
+			}
+			this.fachada.obtenerJugador().obtenerPartida().obtenerMapa().ubicarCatastrofeEn(godzillaDeserializado,fachada.obtenerJugador().obtenerPartida().obtenerMapa().obtenerPosicionDeLaCatastrofe());
+		}
+	}
+	
+	public void deserializarTerremoto(){
+		
+		ArrayList<String> terremoto = new ArrayList<String>();
+		terremoto = gestorDeArchivo.levantar(nombreDelJugador,"terremoto");
+		if (terremoto != null) {
+			PersistirTerremoto persistidor = new PersistirTerremoto();
+			Terremoto terremotoDeserealizado = null;
+			for (String terremotoActual: terremoto){
+				terremotoDeserealizado = persistidor.deserializar(terremotoActual);		
+			}
+			this.fachada.obtenerJugador().obtenerPartida().obtenerMapa().ubicarCatastrofeEn(terremotoDeserealizado,fachada.obtenerJugador().obtenerPartida().obtenerMapa().obtenerPosicionDeLaCatastrofe());
+		}
+	}
+	
 	public Fachada deserializarTodo() throws NoSePuedeEdificarEnEsaZonaException{
 		
 		this.deserializarJugador();
@@ -317,6 +347,8 @@ public class Deserializador {
 		this.deserializarTuberiasDeAgua();
 		this.deserializarRutas();
 		this.deserializarLineasDeTension();
+		this.deserializarGodzilla();
+		this.deserializarTerremoto();
 		
 		return this.fachada;
 	}

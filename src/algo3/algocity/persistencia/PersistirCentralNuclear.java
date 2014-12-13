@@ -2,12 +2,7 @@ package algo3.algocity.persistencia;
 
 import algo3.algocity.modelo.centrales.CentralNuclear;
 
-import com.google.gson.Gson;
-
-public class PersistirCentralNuclear {
-
-	Gson gson = new Gson();
-	String representacionJSON; 
+public class PersistirCentralNuclear extends Persistir {
 	
 	public void serializar(CentralNuclear centralNuclearAserializar){
 		
@@ -20,11 +15,5 @@ public class PersistirCentralNuclear {
 			
 		 return central;
 	}
-
-	public String obtenerSerializazion() {
-		
-		return representacionJSON;
-	}
-
 
 }

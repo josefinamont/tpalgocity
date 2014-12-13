@@ -21,6 +21,7 @@ import algo3.algocity.controlador.CustomKeyListenerjugadorNuevo;
 import algo3.algocity.controlador.VolverABienvenida;
 import algo3.algocity.modelo.Fachada;
 import algo3.algocity.modelo.catastrofes.Terremoto;
+import algo3.algocity.modelo.menu.Partida;
 
 public class Vista {
 	
@@ -42,7 +43,7 @@ public class Vista {
 		 ventana.setVisible(true);
 		 ventana.getContentPane().setLayout(null);
 		 ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		 this.timer = new Timer();
+		 timer = new Timer();
 	 }	
 	 
 	 public JFrame obtenerVentana(){
@@ -53,12 +54,12 @@ public class Vista {
 	 public void setPanelVistaMapaConBotones(Controlador controlador){
 		
 		 Timer timer = new Timer();
-		 timer.schedule(controlador.obtenerFachada().obtenerJugador().obtenerPartida(controlador),3000,3000);
+		  timer.schedule(controlador.obtenerFachada().obtenerJugador().obtenerPartida(controlador),3000,3000);
 		 
 		 ventana.remove(panelActual);
 		 panelActual = new VistaFoto(controlador);
 		 ventana.setContentPane(panelActual);
-		 construirBotoneraConstrucciones(controlador,timer);
+		 construirBotoneraConstrucciones(controlador);
 		 construirGrillaDeTerreno(controlador);		
 		 construirPanelDinero(controlador);	
 		 contruirPanelNotificaciones();
@@ -149,7 +150,7 @@ public class Vista {
 		ventana.setVisible(true);
 	}
 	 
-	 private void construirBotoneraConstrucciones(Controlador controlador,Timer timer) {
+	 private void construirBotoneraConstrucciones(Controlador controlador) {
 		
 		JPanel panelBotones = new JPanel();
 		panelBotones.setBounds(0, 30, 200, 600);

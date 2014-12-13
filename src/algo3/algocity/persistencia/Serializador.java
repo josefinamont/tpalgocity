@@ -5,6 +5,9 @@ import java.util.ArrayList;
 
 import algo3.algocity.gestorDeArchivo.GestorArchivo;
 import algo3.algocity.modelo.Fachada;
+import algo3.algocity.modelo.catastrofes.Catastrofe;
+import algo3.algocity.modelo.catastrofes.Godzilla;
+import algo3.algocity.modelo.catastrofes.Terremoto;
 import algo3.algocity.modelo.centrales.CentralElectrica;
 import algo3.algocity.modelo.centrales.CentralEolica;
 import algo3.algocity.modelo.centrales.CentralMineral;
@@ -43,6 +46,8 @@ public class Serializador {
 	ArrayList<String> centralesNuclearesSerializadas;
 	ArrayList<String> nombresDeJugadoresASerializar;
 	ArrayList<String> nombresSerializados;
+	ArrayList<String> godzillaSerializado;
+	ArrayList<String> terremotoSerializado;
 	ArrayList<String> poblacionSerializada;
 	ArrayList<String> turnosSerializados;
 	ArrayList<String> indiceSerializado;
@@ -67,6 +72,8 @@ public class Serializador {
 		this.tuberiasDeAguaSerializadas = new ArrayList<String>();
 		this.nombresDeJugadoresASerializar = nombresDeJugadores;
 		this.nombresSerializados = new ArrayList<String>();
+		this.godzillaSerializado = new ArrayList<String>();
+		this.terremotoSerializado = new ArrayList<String>();
 		this.poblacionSerializada = new ArrayList<String>();
 		this.turnosSerializados = new ArrayList<String>(); 
 		this.indiceSerializado = new ArrayList<String>();
@@ -80,6 +87,25 @@ public class Serializador {
 			this.gestorArchivo.guardar(this.jugadorSerializado,this.fachada.obtenerJugador().obtenerNombre(),"jugador");
 	}
 	
+	public void serializarCatastrofe() throws FileNotFoundException{
+		
+		Catastrofe catastrofe = fachada.obtenerJugador().obtenerPartida().obtenerMapa().obtenerCatastrofeActual();
+		if (catastrofe.duracionEnTurnos() <= 2 && catastrofe.duracionEnTurnos() >= 0) {
+			PersistirTerremoto persistidor = new PersistirTerremoto();
+			persistidor.serializar((Terremoto) catastrofe);
+			this.terremotoSerializado.add(persistidor.obtenerSerializacion());
+			this.gestorArchivo.guardar(this.terremotoSerializado,this.fachada.obtenerJugador().obtenerNombre(),"terremoto");
+		} else {
+			PersistirGodzilla persistidor = new PersistirGodzilla();
+			persistidor.serializar((Godzilla) catastrofe);
+			this.godzillaSerializado.add(persistidor.obtenerSerializacion());
+			this.gestorArchivo.guardar(this.godzillaSerializado,this.fachada.obtenerJugador().obtenerNombre(),"godzilla");
+		}
+	}
+	
+	public void serializarPartida() throws FileNotFoundException{
+		
+	}
 	public void serializarMapa() throws FileNotFoundException{
 		
 		//PersistirPartida persistidor = new PersistirPartida();
@@ -90,8 +116,6 @@ public class Serializador {
 		persistidorMapa.serializar(fachada.obtenerJugador().obtenerPartida().obtenerMapa());
 		this.mapaSerializado.add(persistidorMapa.obtenerSerializacion());
 		this.gestorArchivo.guardar(this.mapaSerializado,this.fachada.obtenerJugador().obtenerNombre(),"mapa");
-		
-		
 	}
 	
 	public void serializarPoblacionGlobal() throws FileNotFoundException{
@@ -199,7 +223,7 @@ public class Serializador {
 				
 				PersistirIndustrial persistidor = new PersistirIndustrial();
 				persistidor.serializar((Industrial) construccionASerializar);
-				this.industrialesSerializados.add(persistidor.obtenerSerializazion());
+				this.industrialesSerializados.add(persistidor.obtenerSerializacion());
 				this.gestorArchivo.guardar(this.industrialesSerializados,this.fachada.obtenerJugador().obtenerNombre(),"industriales");
 			}else{
 			
@@ -218,21 +242,21 @@ public class Serializador {
 			
 			PersistirCentralEolica persistidor = new PersistirCentralEolica();
 			persistidor.serializar((CentralEolica) construccionASerializar);
-			this.centralesEolicasSerializadas.add(persistidor.obtenerSerializazion());
+			this.centralesEolicasSerializadas.add(persistidor.obtenerSerializacion());
 			this.gestorArchivo.guardar(this.centralesEolicasSerializadas,this.fachada.obtenerJugador().obtenerNombre(),"centrales eolicas");
 		}	
 		if(((CentralElectrica) construccionASerializar).tieneAbastecimientoEnMW(400)){
 		
 			PersistirCentralMineral persistidor = new PersistirCentralMineral();
 			persistidor.serializar((CentralMineral) construccionASerializar);
-			this.centralesMineralesSerializadas.add(persistidor.obtenerSerializazion());
+			this.centralesMineralesSerializadas.add(persistidor.obtenerSerializacion());
 			this.gestorArchivo.guardar(this.centralesMineralesSerializadas,this.fachada.obtenerJugador().obtenerNombre(),"centrales minerales");
 		}
 		if(((CentralElectrica) construccionASerializar).tieneAbastecimientoEnMW(1000)){
 			
 			PersistirCentralNuclear persistidor = new PersistirCentralNuclear();
 			persistidor.serializar((CentralNuclear) construccionASerializar);
-			this.centralesNuclearesSerializadas.add(persistidor.obtenerSerializazion());
+			this.centralesNuclearesSerializadas.add(persistidor.obtenerSerializacion());
 			this.gestorArchivo.guardar(this.centralesNuclearesSerializadas,this.fachada.obtenerJugador().obtenerNombre(),"centrales nucleares");
 		}
 		
@@ -260,5 +284,6 @@ public class Serializador {
 		this.serializarIndiceDeFelicidad();
 		this.serializarPozosDeAgua();
 		this.serializarListaDeJugadores();
+		this.serializarCatastrofe();
 	}
 }

@@ -15,7 +15,7 @@ import algo3.algocity.modelo.mapa.Mapa;
 public class Terremoto implements Catastrofe {
 	
 	private Hectarea hectareaALaQuePertenece;
-	private transient int duracionEnTurnos;
+	private int duracionEnTurnos;
 	
 	public Terremoto() {
 		
@@ -65,6 +65,11 @@ public class Terremoto implements Catastrofe {
 		
 		Image image = new ImageIcon("imagenes/terremoto.png").getImage();
 		g.drawImage(image,coordDimensionada.obtenerPosicionX()+10,coordDimensionada.obtenerPosicionY()+10,null);
+	}
+	
+	public int duracionEnTurnos() {
+		
+		return this.duracionEnTurnos;
 	}
 
 }

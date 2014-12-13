@@ -1,11 +1,6 @@
 package algo3.algocity.persistencia;
 
-import com.google.gson.Gson;
-
-public class PersistirListaDeJugadores {
-	
-	Gson gson = new Gson();
-	String representacionJSON; 
+public class PersistirListaDeJugadores extends Persistir{
 	
 	public void serializar(String listaAserializar){
 		
@@ -17,11 +12,6 @@ public class PersistirListaDeJugadores {
 		String nombres = gson.fromJson(objetoSerializado,String.class);
 			
 		 return nombres;
-	}
-
-	public String obtenerSerializacion() {
-		
-		return representacionJSON;
 	}
 
 }

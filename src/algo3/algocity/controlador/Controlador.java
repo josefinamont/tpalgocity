@@ -215,7 +215,6 @@ import algo3.algocity.vista.Vista;
 	}
 
 	public void setPanelVistaMapaConBotones() {
-		
 		this.obtenerVista().setPanelVistaMapaConBotones(this);
 	}
 	

@@ -2,13 +2,8 @@ package algo3.algocity.persistencia;
 
 import algo3.algocity.modelo.construibles.PozoDeAgua;
 
-import com.google.gson.Gson;
+public class PersistirPozoDeAgua extends Persistir {
 
-public class PersistirPozoDeAgua {
-
-	Gson gson = new Gson();
-	String representacionJSON; 
-	
 	public void serializar(PozoDeAgua pozoAserializar){
 		
 		representacionJSON = gson.toJson(pozoAserializar);
@@ -21,8 +16,4 @@ public class PersistirPozoDeAgua {
 		 return pozo;
 	}
 
-	public String obtenerSerializacion() {
-		
-		return this.representacionJSON;
-	}
 }

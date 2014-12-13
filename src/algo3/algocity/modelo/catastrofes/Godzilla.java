@@ -92,5 +92,10 @@ public class Godzilla implements Catastrofe {
 		Image image = new ImageIcon("imagenes/godzillaverde.png").getImage();
 		g.drawImage(image,coordDimensionada.obtenerPosicionX(),coordDimensionada.obtenerPosicionY(),null);
 	}
+
+	public int duracionEnTurnos() {
+		
+		return -1;//para poder diferenciarlo de un terremoto
+	}
 	
 }

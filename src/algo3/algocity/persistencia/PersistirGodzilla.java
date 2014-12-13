@@ -2,12 +2,7 @@ package algo3.algocity.persistencia;
 
 import algo3.algocity.modelo.catastrofes.Godzilla;
 
-import com.google.gson.Gson;
-
-public class PersistirGodzilla {
-	
-	String representacionJSON;
-	Gson gson = new Gson();
+public class PersistirGodzilla extends Persistir {
 	
 	public PersistirGodzilla(){
 		
@@ -19,16 +14,11 @@ public class PersistirGodzilla {
 		this.representacionJSON = gson.toJson(godzilla);
 	}
 	
-	public String obtenerSerializacion() {
+	public Godzilla deserializar(String objetoSerializado) {
 		
-		return this.representacionJSON;
-	}
-	
-	public Godzilla deserializar(String godzillaSerializado) {
-		
-		 Godzilla godzillaNuevo = gson.fromJson(godzillaSerializado,Godzilla.class);
-		
-		 return godzillaNuevo;
+		Godzilla godzilla = gson.fromJson(objetoSerializado,Godzilla.class);
+			
+		 return godzilla;
 	}
 
 }

@@ -2,12 +2,7 @@ package algo3.algocity.persistencia;
 
 import algo3.algocity.modelo.menu.Partida;
 
-import com.google.gson.Gson;
-
-public class PersistirPartida {
-
-	Gson gson = new Gson();
-	String representacionJSON; 
+public class PersistirPartida extends Persistir {
 	
 	public void serializar(Partida partidaASerializar){
 		
@@ -20,9 +15,5 @@ public class PersistirPartida {
 			
 		 return partida;
 	}
-	
-	public String obtenerSerializacion() {
-		
-		return this.representacionJSON;
-	}
+
 }

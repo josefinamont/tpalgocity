@@ -13,4 +13,5 @@ public interface Catastrofe {
 	public void provocarDañosEn(Mapa mapa);
 	public void destruirPorTurno(Mapa mapa);
 	public void dibujarCatastrofe(Graphics g,Coordenada coordDimensionada);
+	public int duracionEnTurnos();//solo para poder persistir
 }

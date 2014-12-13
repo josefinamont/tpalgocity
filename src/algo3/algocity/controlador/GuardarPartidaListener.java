@@ -25,6 +25,7 @@ public class GuardarPartidaListener extends ControladorListener {
 		timer.cancel();
 		Serializador serializador = new Serializador(controlador.obtenerFachada(),controlador.obtenerNombres());
 		try {
+			controlador.obtenerFachada().obtenerJugador().obtenerPartida(controlador).cancel();
 			//timer.cancel();
 			serializador.serializarTodo();
 		} catch (FileNotFoundException e1) {

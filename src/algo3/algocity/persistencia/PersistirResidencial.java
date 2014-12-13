@@ -2,12 +2,7 @@ package algo3.algocity.persistencia;
 
 import algo3.algocity.modelo.edificios.Residencial;
 
-import com.google.gson.Gson;
-
-public class PersistirResidencial {
-
-	String representacionJSON;
-	Gson gson = new Gson();
+public class PersistirResidencial extends Persistir {
 	
 	public PersistirResidencial(){
 
@@ -17,11 +12,6 @@ public class PersistirResidencial {
 	public void serializar(Residencial residencial){
 		
 		this.representacionJSON = gson.toJson(residencial);
-	}
-	
-	public String obtenerSerializacion() {
-		
-		return this.representacionJSON;
 	}
 	
 	public Residencial deserializar(String residencialSerializado) {

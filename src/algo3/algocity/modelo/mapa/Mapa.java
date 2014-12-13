@@ -94,7 +94,6 @@ public class Mapa {
 		 int columna = coordenada.obtenerPosicionX();
 		 
 		 return this.mapa.get(fila).get(columna);
-		 //return this.mapa.get(columna).get(fila);
 	}
 		
 	public void construirMegaConstruccion(MegaConstruccion unaConstruccion,Coordenada coordenada) throws NoSePuedeEdificarEnEsaZonaException {
@@ -543,7 +542,6 @@ public class Mapa {
 			int random = generadorRandom.nextInt(2);
 			if (random == 0) { coordenadaAleatoriaX = 0; } else { coordenadaAleatoriaX = this.ancho - 1; }
 		}
-		System.out.println(coordenadaAleatoriaY+" "+coordenadaAleatoriaX);
 		Coordenada coordenada = new Coordenada(coordenadaAleatoriaY,coordenadaAleatoriaX);
 		
 		return coordenada;
