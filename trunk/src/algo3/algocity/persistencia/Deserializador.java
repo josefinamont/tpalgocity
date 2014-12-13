@@ -1,61 +1,87 @@
 package algo3.algocity.persistencia;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.lang.reflect.Type;
+import java.util.ArrayList;
 
-import com.google.gson.Gson;
-
-import algo3.algocity.modelo.construibles.PozoDeAgua;
+import algo3.algocity.gestorDeArchivo.GestorArchivo;
+import algo3.algocity.modelo.Fachada;
+import algo3.algocity.modelo.construibles.EstacionDeBomberos;
 import algo3.algocity.modelo.edificios.Comercial;
-import algo3.algocity.modelo.mapa.Coordenada;
-import algo3.algocity.modelo.menu.Poblacion;
-import algo3.algocity.modelo.mapa.*;
+import algo3.algocity.modelo.edificios.Industrial;
+import algo3.algocity.modelo.edificios.Residencial;
+import algo3.algocity.modelo.excepciones.NoSePuedeEdificarEnEsaZonaException;
+import algo3.algocity.modelo.menu.Jugador;
 
 public class Deserializador {
+
+	String nombreDelJugador;
+	GestorArchivo gestorDeArchivo;
+	Fachada fachada;
 	
-	Gson gson = new Gson();
+	public Deserializador(String nombreDelJugador){
+		
+		this.nombreDelJugador = nombreDelJugador;
+		this.gestorDeArchivo = new GestorArchivo();
+		this.fachada = new Fachada();
+	}
 	
-	public Deserializador(){
+	public void deserializarJugador(){
 		
+		ArrayList<String> jugador = new ArrayList<String>();
+		jugador = gestorDeArchivo.levantar(nombreDelJugador,"jugador");
+		PersistirJugador persistidor = new PersistirJugador();
+		Jugador jugadorDeserializado = null;
+		for (String jugadorActual: jugador){
+			jugadorDeserializado = persistidor.deserializar(jugadorActual);		
+		}
+		this.fachada.definirJugador(jugadorDeserializado);
 	}
-
-	public PozoDeAgua deserializarPozoDeAgua(String objetoSerializado) {
-		 
-		 PozoDeAgua unPozo; 
-		 unPozo = gson.fromJson(objetoSerializado, PozoDeAgua.class);
+	
+	public void deserializarResidenciales() throws NoSePuedeEdificarEnEsaZonaException{
 		
-		 return unPozo;
+		ArrayList<String> residenciales = new ArrayList<String>();
+		residenciales = gestorDeArchivo.levantar(nombreDelJugador,"residenciales");
+		PersistirResidencial persistidor = new PersistirResidencial();
+		Residencial residencialDeserializado = null;
+		for (String residencial: residenciales){
+			residencialDeserializado = persistidor.deserializar(residencial);	
+			fachada.jugadorConstruir(residencialDeserializado,residencialDeserializado.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+		}
 	}
-
-	public Poblacion deserializarUnaPoblacion(String objetoSerializado) {
+	
+	public void deserializarComerciales() throws NoSePuedeEdificarEnEsaZonaException{
 		
-		 Poblacion poblacion = gson.fromJson(objetoSerializado,Poblacion.class);
-		
-		 return poblacion;
+		ArrayList<String> comerciales = new ArrayList<String>();
+		comerciales = gestorDeArchivo.levantar(nombreDelJugador,"comerciales");
+		PersistirComercial persistidor = new PersistirComercial();
+		Comercial comercialDeserializado = null;
+		for (String comercial: comerciales){
+			comercialDeserializado = persistidor.deserializar(comercial);	
+			fachada.jugadorConstruir(comercialDeserializado,comercialDeserializado.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+		}
 	}
-
-	public Coordenada deserializarUnaCoordenada(String objetoSerializado) {
+	
+	public void deserializarIndustriales() throws NoSePuedeEdificarEnEsaZonaException{
 		
-		 Coordenada coordenada = gson.fromJson(objetoSerializado,Coordenada.class);
-		
-		 return coordenada;
+		ArrayList<String> industriales = new ArrayList<String>();
+		industriales = gestorDeArchivo.levantar(nombreDelJugador,"industriales");
+		PersistirIndustrial persistidor = new PersistirIndustrial();
+		Industrial industrialDeserializado = null;
+		for (String industrial: industriales){
+			industrialDeserializado = persistidor.deserializar(industrial);	
+			fachada.jugadorConstruir(industrialDeserializado,industrialDeserializado.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+		}
 	}
-
-	public Comercial deserializarComercial(String objetoSerializado) {
+	
+	public void deserializarBomberos() throws NoSePuedeEdificarEnEsaZonaException{
 		
-		 Comercial comercial = gson.fromJson(objetoSerializado,Comercial.class);
-			
-		 return comercial;
-	}
-
-	public Mapa deserializarUnMapa(String objetoSerializado) {
-		
-		Mapa unMapa = gson.fromJson(objetoSerializado,Mapa.class);
-		
-		return unMapa;
+		ArrayList<String> bomberos = new ArrayList<String>();
+		bomberos = gestorDeArchivo.levantar(nombreDelJugador,"bomberos");
+		PersistirEstacionDeBomberos persistidor = new PersistirEstacionDeBomberos();
+		EstacionDeBomberos bomberosDeserializados = null;
+		for (String estacionDeBomberos: bomberos){
+			bomberosDeserializados = persistidor.deserializar(estacionDeBomberos);	
+			fachada.jugadorConstruir(bomberosDeserializados,bomberosDeserializados.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+		}
 	}
 	
 }

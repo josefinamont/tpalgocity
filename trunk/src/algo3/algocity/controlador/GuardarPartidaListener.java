@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 import java.util.Timer;
 
-import algo3.algocity.persistencia.PersistenciaDelJuego;
+import algo3.algocity.persistencia.Serializador;
 
 public class GuardarPartidaListener extends ControladorListener {
 	
@@ -23,7 +23,7 @@ public class GuardarPartidaListener extends ControladorListener {
 		//Jugador jugador = controlador.obtenerFachada().obtenerJugador();
 		//Partida partida = controlador.obtenerFachada().obtenerJugador().obtenerPartida();
 		
-		PersistenciaDelJuego persistencia = new PersistenciaDelJuego(controlador.obtenerFachada());
+		Serializador persistencia = new Serializador(controlador.obtenerFachada());
 		try {
 			timer.cancel();
 			persistencia.persistirTodo();

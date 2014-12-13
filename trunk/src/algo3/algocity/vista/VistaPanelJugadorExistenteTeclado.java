@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import algo3.algocity.controlador.Controlador;
 import algo3.algocity.controlador.CustomKeyListenerjugadorExistente;
 import algo3.algocity.controlador.CustomKeyListenerjugadorNuevo;
+import algo3.algocity.persistencia.Deserializador;
 
 public class VistaPanelJugadorExistenteTeclado extends JPanel{
 	
@@ -58,7 +59,9 @@ public class VistaPanelJugadorExistenteTeclado extends JPanel{
 	    	  public void actionPerformed(ActionEvent e) {
 	    		  
 	    		  if(textField.getText().trim().length() != 0 ){
-	    		 
+	    			  String nombreDelJugador = textField.getText();
+	    			  Deserializador deserializador = new Deserializador(nombreDelJugador);
+	    			  
 	    			  controlador.agregarJugadorAFachadas(textField.getText());
 	    			  controlador.obtenerVista().setPanelVistaMapaConBotones(controlador);
 	    			  

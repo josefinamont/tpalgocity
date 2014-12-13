@@ -38,4 +38,9 @@ public class Fachada {
 	
 		return this.unJugador.obtenerPartida().obtenerMapa().obtenerMegaConstrucciones();
 	}
+
+	public void definirJugador(Jugador jugador) {
+		
+		this.unJugador = jugador;
+	}
 }
