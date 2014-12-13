@@ -2,6 +2,7 @@ package algo3.algocity.gestorDeArchivo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -59,6 +60,24 @@ import java.util.Scanner;
 		entrada.flush();
 		entrada.close();
 	}
+	
+	public void guardarString(String nuevoNombre,String nombreCarpeta,String nombreArchivo) throws IOException{
+		  
+		 FileWriter fout = new FileWriter(nombreCarpeta + "/" + nombreArchivo+".txt",true);
+		 PrintWriter fileout = new PrintWriter(fout,true);
+		 fileout.println(nuevoNombre + "\n");
+		 fileout.close();
+		 }
+	
+	public void guardarListaString(ArrayList<String> nuevoNombre,String nombreCarpeta,String nombreArchivo) throws IOException{
+		  
+		 FileWriter fout = new FileWriter(nombreCarpeta + "/" + nombreArchivo+".txt",true);
+		 PrintWriter fileout = new PrintWriter(fout,true);
+		 for(String texto : nuevoNombre){
+			fileout.println(nuevoNombre +"\n");
+		 }
+		 fileout.close();
+		 }
 	
 	public static void main(String[] args) throws IOException {
 		
