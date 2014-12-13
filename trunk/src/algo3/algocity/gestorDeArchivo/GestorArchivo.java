@@ -65,7 +65,7 @@ import java.util.Scanner;
 		  
 		 FileWriter fout = new FileWriter(nombreCarpeta + "/" + nombreArchivo+".txt",true);
 		 PrintWriter fileout = new PrintWriter(fout,true);
-		 fileout.println(nuevoNombre + "\n");
+		 fileout.println(nuevoNombre);
 		 fileout.close();
 		 }
 	
@@ -74,7 +74,7 @@ import java.util.Scanner;
 		 FileWriter fout = new FileWriter(nombreCarpeta + "/" + nombreArchivo+".txt",true);
 		 PrintWriter fileout = new PrintWriter(fout,true);
 		 for(String texto : nuevoNombre){
-			fileout.println(nuevoNombre +"\n");
+			fileout.println(nuevoNombre);
 		 }
 		 fileout.close();
 		 }
