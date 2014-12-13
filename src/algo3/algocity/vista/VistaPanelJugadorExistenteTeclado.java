@@ -58,6 +58,7 @@ public class VistaPanelJugadorExistenteTeclado extends JPanel{
 	       this.add(okButton);   
 	       this.add(botonVolverAJugadorNuevoOExistente);
 	       controlador.llenarLabelConNombres(nombresJugadoresExistentes);
+	       nombresJugadoresExistentes.setVisible(true);
 	     
 	       okButton.addActionListener(new ActionListener() {
 
