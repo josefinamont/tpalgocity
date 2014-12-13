@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import algo3.algocity.gestorDeArchivo.GestorArchivo;
 import algo3.algocity.modelo.Fachada;
+import algo3.algocity.modelo.centrales.CentralEolica;
+import algo3.algocity.modelo.centrales.CentralMineral;
+import algo3.algocity.modelo.centrales.CentralNuclear;
 import algo3.algocity.modelo.construibles.EstacionDeBomberos;
 import algo3.algocity.modelo.construibles.PozoDeAgua;
 import algo3.algocity.modelo.edificios.Comercial;
@@ -98,6 +101,42 @@ public class Deserializador {
 		}
 	}
 	
+	public void deserializarCentralEolica() throws NoSePuedeEdificarEnEsaZonaException{
+		
+		ArrayList<String> centrales = new ArrayList<String>();
+		centrales = gestorDeArchivo.levantar(nombreDelJugador,"central eolica");
+		PersistirCentralEolica persistidor = new PersistirCentralEolica();
+		CentralEolica centralDeserializada = null;
+		for (String centralActual: centrales){
+			centralDeserializada = persistidor.deserializar(centralActual);	
+			fachada.jugadorConstruir(centralDeserializada,centralDeserializada.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+		}
+	}
+	
+	public void deserializarCentralNuclear() throws NoSePuedeEdificarEnEsaZonaException{
+		
+		ArrayList<String> centrales = new ArrayList<String>();
+		centrales = gestorDeArchivo.levantar(nombreDelJugador,"central nuclear");
+		PersistirCentralNuclear persistidor = new PersistirCentralNuclear();
+		CentralNuclear centralDeserializada = null;
+		for (String centralActual: centrales){
+			centralDeserializada = persistidor.deserializar(centralActual);	
+			fachada.jugadorConstruir(centralDeserializada,centralDeserializada.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+		}
+	}
+	
+	public void deserializarCentralMineral() throws NoSePuedeEdificarEnEsaZonaException{
+		
+		ArrayList<String> centrales = new ArrayList<String>();
+		centrales = gestorDeArchivo.levantar(nombreDelJugador,"central mineral");
+		PersistirCentralMineral persistidor = new PersistirCentralMineral();
+		CentralMineral centralDeserializada = null;
+		for (String centralActual: centrales){
+			centralDeserializada = persistidor.deserializar(centralActual);	
+			fachada.jugadorConstruir(centralDeserializada,centralDeserializada.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+		}
+	}
+
 	public void deserializarPozos() throws NoSePuedeEdificarEnEsaZonaException{
 		
 		ArrayList<String> pozos = new ArrayList<String>();
@@ -120,4 +159,5 @@ public class Deserializador {
 		this.deserializarComerciales();
 		this.deserializarIndustriales();
 	}
+
 }
