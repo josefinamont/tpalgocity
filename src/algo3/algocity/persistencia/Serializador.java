@@ -90,7 +90,7 @@ public class Serializador {
 	public void serializarCatastrofe() throws FileNotFoundException{
 		
 		Catastrofe catastrofe = fachada.obtenerJugador().obtenerPartida().obtenerMapa().obtenerCatastrofeActual();
-		if (catastrofe.duracionEnTurnos() <= 2 && catastrofe.duracionEnTurnos() >= 0) {
+		if (catastrofe != null && catastrofe.duracionEnTurnos() <= 2 && catastrofe.duracionEnTurnos() >= 0) {
 			PersistirTerremoto persistidor = new PersistirTerremoto();
 			persistidor.serializar((Terremoto) catastrofe);
 			this.terremotoSerializado.add(persistidor.obtenerSerializacion());
