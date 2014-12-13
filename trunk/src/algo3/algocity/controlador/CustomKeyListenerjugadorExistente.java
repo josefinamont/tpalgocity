@@ -3,7 +3,6 @@ package algo3.algocity.controlador;
 import java.awt.TextField;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Timer;
 
 import javax.swing.JLabel;
 
@@ -37,20 +36,14 @@ import algo3.algocity.persistencia.Deserializador;
 			Deserializador deserializador = new Deserializador(nombreDelJugador);
 			try {
 				controlador.definirFachada(deserializador.deserializarTodo());
+				controlador.setPanelVistaMapaConBotones();
 			} catch (NoSePuedeEdificarEnEsaZonaException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}
-       	  	 //controlador.agregarJugadorAFachadas(textField.getText());
-			controlador.setPanelVistaMapaConBotones();
-       	  	 //controlador.jugadorEstaEnLaLista(textField.getText());
-	      }
-	      else{
-		         	
-             statusLabel.setText("Ingrese un nombre válido");
+			} 
+		} else { statusLabel.setText("Ingrese un nombre válido");
          }
-        }
- }
+	  }
+}
 
  public void keyReleased(KeyEvent e) {            
       

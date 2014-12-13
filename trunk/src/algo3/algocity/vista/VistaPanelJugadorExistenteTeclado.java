@@ -84,6 +84,7 @@ public class VistaPanelJugadorExistenteTeclado extends JPanel{
 		   this.getComponent(3).setBounds(650, 300, 150, 50);
 		   this.getComponent(4).setBounds(550, 450, 150, 50);
 		   this.getComponent(5).setBounds(550, 525, 150, 50);
+		   this.getComponent(6).setBounds(550, 600, 150, 50);
 
 	}
 	
