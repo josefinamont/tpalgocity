@@ -90,17 +90,18 @@ public class Serializador {
 	public void serializarCatastrofe() throws FileNotFoundException{
 		
 		Catastrofe catastrofe = fachada.obtenerJugador().obtenerPartida().obtenerMapa().obtenerCatastrofeActual();
-		if (catastrofe != null && catastrofe.duracionEnTurnos() <= 2 && catastrofe.duracionEnTurnos() >= 0) {
-			PersistirTerremoto persistidor = new PersistirTerremoto();
-			persistidor.serializar((Terremoto) catastrofe);
-			this.terremotoSerializado.add(persistidor.obtenerSerializacion());
-			this.gestorArchivo.guardar(this.terremotoSerializado,this.fachada.obtenerJugador().obtenerNombre(),"terremoto");
-		} else {
-			PersistirGodzilla persistidor = new PersistirGodzilla();
-			persistidor.serializar((Godzilla) catastrofe);
-			this.godzillaSerializado.add(persistidor.obtenerSerializacion());
-			this.gestorArchivo.guardar(this.godzillaSerializado,this.fachada.obtenerJugador().obtenerNombre(),"godzilla");
-		}
+		if (catastrofe != null )
+			if(catastrofe.duracionEnTurnos() <= 2 && catastrofe.duracionEnTurnos() >= 0) {
+				PersistirTerremoto persistidor = new PersistirTerremoto();
+				persistidor.serializar((Terremoto) catastrofe);
+				this.terremotoSerializado.add(persistidor.obtenerSerializacion());
+				this.gestorArchivo.guardar(this.terremotoSerializado,this.fachada.obtenerJugador().obtenerNombre(),"terremoto");
+			} else {
+				PersistirGodzilla persistidor = new PersistirGodzilla();
+				persistidor.serializar((Godzilla) catastrofe);
+				this.godzillaSerializado.add(persistidor.obtenerSerializacion());
+				this.gestorArchivo.guardar(this.godzillaSerializado,this.fachada.obtenerJugador().obtenerNombre(),"godzilla");
+			  }
 	}
 	
 	public void serializarPartida() throws FileNotFoundException{
@@ -108,10 +109,6 @@ public class Serializador {
 	}
 	public void serializarMapa() throws FileNotFoundException{
 		
-		//PersistirPartida persistidor = new PersistirPartida();
-		//persistidor.serializar(fachada.obtenerJugador().obtenerPartida());
-		//this.partidaSerializada.add(persistidor.obtenerSerializacion());
-		//this.gestorArchivo.guardar(this.partidaSerializada,this.fachada.obtenerJugador().obtenerNombre(),"partida");
 		PersistirMapa persistidorMapa = new PersistirMapa();
 		persistidorMapa.serializar(fachada.obtenerJugador().obtenerPartida().obtenerMapa());
 		this.mapaSerializado.add(persistidorMapa.obtenerSerializacion());
