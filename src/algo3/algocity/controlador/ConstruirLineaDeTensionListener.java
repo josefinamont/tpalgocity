@@ -16,7 +16,9 @@ public class ConstruirLineaDeTensionListener extends ControladorListener {
 		
 		MiniConstruccion lineaDeTension = new LineaDeTension();
 		controlador.notificarUsuario("Construir una linea de tension. Precio: $" + lineaDeTension.costo() + ".");
-		controlador.definirSiguienteConstruccionAConstruir(lineaDeTension);
-		controlador.obtenerVista().cambiarAVistaSuperficie();
+		if (controlador.obtenerFachada().obtenerJugador().dinero() >= lineaDeTension.costo()) {
+			controlador.definirSiguienteConstruccionAConstruir(lineaDeTension);
+			controlador.obtenerVista().cambiarAVistaSuperficie();
+		} else controlador.notificarUsuario("No tiene dinero suficiente para construir lo requerido");
 	}
 }

@@ -16,7 +16,9 @@ public class ConstruirComercialListener extends ControladorListener {
 		
 		MegaConstruccion comercio = new Comercial();
 		controlador.notificarUsuario("Construir zona comercial. Precio: $" + comercio.costo() + ".");
-		controlador.definirSiguienteConstruccionAConstruir(comercio);
-		controlador.obtenerVista().cambiarAVistaSuperficie();
+		if (controlador.obtenerFachada().obtenerJugador().dinero() >= comercio.costo()) {
+			controlador.definirSiguienteConstruccionAConstruir(comercio);
+			controlador.obtenerVista().cambiarAVistaSuperficie();
+		} else controlador.notificarUsuario("No tiene dinero suficiente para construir lo requerido");
 	}
 }

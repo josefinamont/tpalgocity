@@ -16,7 +16,9 @@ public class ConstruirCentralMineralListener extends ControladorListener {
 		
 		MegaConstruccion centralMineral = new CentralMineral();
 		controlador.notificarUsuario("Construir central mineral. Precio: $" + centralMineral.costo() + ".");
-		controlador.definirSiguienteConstruccionAConstruir(centralMineral);
-		controlador.obtenerVista().cambiarAVistaSuperficie();
+		if (controlador.obtenerFachada().obtenerJugador().dinero() >= centralMineral.costo()) {
+			controlador.definirSiguienteConstruccionAConstruir(centralMineral);
+			controlador.obtenerVista().cambiarAVistaSuperficie();
+		} else controlador.notificarUsuario("No tiene dinero suficiente para construir lo requerido");
 	}
 }

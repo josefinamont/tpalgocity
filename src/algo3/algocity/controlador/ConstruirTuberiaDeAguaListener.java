@@ -16,8 +16,10 @@ public class ConstruirTuberiaDeAguaListener extends ControladorListener {
 		
 		MiniConstruccion tuberiaDeAgua = new TuberiaDeAgua();
 		controlador.notificarUsuario("Construir tuberia. Precio: $" + tuberiaDeAgua.costo() + ".");
-		controlador.definirSiguienteConstruccionAConstruir(tuberiaDeAgua);
-		controlador.obtenerVista().cambiarAVistaSubterranea();
+		if (controlador.obtenerFachada().obtenerJugador().dinero() >= tuberiaDeAgua.costo()) {
+			controlador.definirSiguienteConstruccionAConstruir(tuberiaDeAgua);
+			controlador.obtenerVista().cambiarAVistaSuperficie();
+		} else controlador.notificarUsuario("No tiene dinero suficiente para construir lo requerido");
 	}
 }
 

@@ -16,7 +16,9 @@ public class ConstruirRutaListener extends ControladorListener {
 		
 		MiniConstruccion ruta = new Ruta();
 		controlador.notificarUsuario("Construir ruta. Precio: $" + ruta.costo() + ".");
-		controlador.definirSiguienteConstruccionAConstruir(ruta);
-		controlador.obtenerVista().cambiarAVistaSuperficie();
+		if (controlador.obtenerFachada().obtenerJugador().dinero() >= ruta.costo()) {
+			controlador.definirSiguienteConstruccionAConstruir(ruta);
+			controlador.obtenerVista().cambiarAVistaSuperficie();
+		} else controlador.notificarUsuario("No tiene dinero suficiente para construir lo requerido");
 	}
 }

@@ -25,7 +25,7 @@ import java.util.Scanner;
 	public ArrayList<String> levantar(String nombreCarpeta,String nombreArchivo){
 		
 		ArrayList<String> retorno = new ArrayList<String>();
-	    File f = new File(nombreCarpeta+"/" + nombreArchivo+".txt");
+	    File f = new File(nombreCarpeta+"/" + nombreArchivo+".json");
 	    if (f.exists()) {
 		    String cadena;
 		    Scanner entrada = null;
@@ -48,7 +48,7 @@ import java.util.Scanner;
 		
 		PrintWriter entrada = null;
 		
-		entrada = new PrintWriter(nombreCarpeta + "/" + nombreArchivo+".txt");
+		entrada = new PrintWriter(nombreCarpeta + "/" + nombreArchivo+".json");
 		for(String texto : lista){
 			
 			entrada.println(texto);
@@ -59,7 +59,7 @@ import java.util.Scanner;
 	
 	public void guardarString(String nuevoNombre,String nombreCarpeta,String nombreArchivo) throws IOException{
 		  
-		 FileWriter fout = new FileWriter(nombreCarpeta + "/" + nombreArchivo+".txt",true);
+		 FileWriter fout = new FileWriter(nombreCarpeta + "/" + nombreArchivo+".json",true);
 		 PrintWriter fileout = new PrintWriter(fout,true);
 		 fileout.write(nuevoNombre + "\n");
 		 fileout.println(nuevoNombre);
@@ -68,7 +68,7 @@ import java.util.Scanner;
 	
 	public void guardarListaString(ArrayList<String> nuevosNombres,String nombreCarpeta,String nombreArchivo) throws IOException{
 		  
-		 FileWriter fout = new FileWriter(nombreCarpeta + "/" + nombreArchivo+".txt",true);
+		 FileWriter fout = new FileWriter(nombreCarpeta + "/" + nombreArchivo+".json",true);
 		 PrintWriter fileout = new PrintWriter(fout,true);
 		 for(String texto : nuevosNombres){
 			fileout.println(texto +"\n");

@@ -15,8 +15,10 @@ public class ConstruirCentralEolicaListener extends ControladorListener {
 	public void actionPerformed(ActionEvent e) {
 		MegaConstruccion centralEolica = new CentralEolica();
 		controlador.notificarUsuario("Construir central eolica. Precio: $" + centralEolica.costo() + ".");
-		controlador.definirSiguienteConstruccionAConstruir(centralEolica);
-		controlador.obtenerVista().cambiarAVistaSuperficie();
+		if (controlador.obtenerFachada().obtenerJugador().dinero() >= centralEolica.costo()) {
+			controlador.definirSiguienteConstruccionAConstruir(centralEolica);
+			controlador.obtenerVista().cambiarAVistaSuperficie();
+		} else controlador.notificarUsuario("No tiene dinero suficiente para construir lo requerido");
 	}
 
 }
