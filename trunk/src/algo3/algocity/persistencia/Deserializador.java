@@ -75,7 +75,7 @@ public class Deserializador {
 			Residencial residencialDeserializado = null;
 			for (String residencial: residenciales){
 				residencialDeserializado = persistidor.deserializar(residencial);	
-				fachada.jugadorConstruir(residencialDeserializado,residencialDeserializado.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+				fachada.jugadorReconstruir(residencialDeserializado,residencialDeserializado.obtenerHectareaALaQuePertenece().obtenerCoordenada());
 			}
 		}
 	}
@@ -89,7 +89,7 @@ public class Deserializador {
 			Comercial comercialDeserializado = null;
 			for (String comercial: comerciales){
 				comercialDeserializado = persistidor.deserializar(comercial);	
-				fachada.jugadorConstruir(comercialDeserializado,comercialDeserializado.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+				fachada.jugadorReconstruir(comercialDeserializado,comercialDeserializado.obtenerHectareaALaQuePertenece().obtenerCoordenada());
 			}
 		}
 	}
@@ -103,7 +103,7 @@ public class Deserializador {
 			Industrial industrialDeserializado = null;
 			for (String industrial: industriales){
 				industrialDeserializado = persistidor.deserializar(industrial);	
-				fachada.jugadorConstruir(industrialDeserializado,industrialDeserializado.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+				fachada.jugadorReconstruir(industrialDeserializado,industrialDeserializado.obtenerHectareaALaQuePertenece().obtenerCoordenada());
 			}
 		}
 	}
@@ -117,7 +117,7 @@ public class Deserializador {
 			EstacionDeBomberos bomberosDeserializados = null;
 			for (String estacionDeBomberos: bomberos){
 				bomberosDeserializados = persistidor.deserializar(estacionDeBomberos);	
-				fachada.jugadorConstruir(bomberosDeserializados,bomberosDeserializados.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+				fachada.jugadorReconstruir(bomberosDeserializados,bomberosDeserializados.obtenerHectareaALaQuePertenece().obtenerCoordenada());
 			}
 		}
 	}
@@ -131,7 +131,7 @@ public class Deserializador {
 			CentralEolica centralDeserializada = null;
 			for (String centralActual: centrales){
 				centralDeserializada = persistidor.deserializar(centralActual);	
-				fachada.jugadorConstruir(centralDeserializada,centralDeserializada.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+				fachada.jugadorReconstruir(centralDeserializada,centralDeserializada.obtenerHectareaALaQuePertenece().obtenerCoordenada());
 			}
 		}
 	}
@@ -145,7 +145,7 @@ public class Deserializador {
 			CentralNuclear centralDeserializada = null;
 			for (String centralActual: centrales){
 				centralDeserializada = persistidor.deserializar(centralActual);	
-				fachada.jugadorConstruir(centralDeserializada,centralDeserializada.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+				fachada.jugadorReconstruir(centralDeserializada,centralDeserializada.obtenerHectareaALaQuePertenece().obtenerCoordenada());
 			}
 		}
 	}
@@ -159,7 +159,7 @@ public class Deserializador {
 			CentralMineral centralDeserializada = null;
 			for (String centralActual: centrales){
 				centralDeserializada = persistidor.deserializar(centralActual);	
-				fachada.jugadorConstruir(centralDeserializada,centralDeserializada.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+				fachada.jugadorReconstruir(centralDeserializada,centralDeserializada.obtenerHectareaALaQuePertenece().obtenerCoordenada());
 			}
 		}
 	}
@@ -173,7 +173,7 @@ public class Deserializador {
 			PozoDeAgua pozoDeAguaDeserializado = null;
 			for (String pozoDeAgua: pozos){
 				pozoDeAguaDeserializado = persistidor.deserializar(pozoDeAgua);	
-				fachada.jugadorConstruir(pozoDeAguaDeserializado,pozoDeAguaDeserializado.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+				fachada.jugadorReconstruir(pozoDeAguaDeserializado,pozoDeAguaDeserializado.obtenerHectareaALaQuePertenece().obtenerCoordenada());
 			}
 		}
 	}
@@ -203,7 +203,7 @@ public class Deserializador {
 			TuberiaDeAgua tuberiaDeserializada = null;
 			for (String tuberiaDeAgua: tuberias){
 				tuberiaDeserializada = persistidor.deserializar(tuberiaDeAgua);	
-				fachada.jugadorConstruir(tuberiaDeserializada,tuberiaDeserializada.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+				fachada.jugadorReconstruir(tuberiaDeserializada,tuberiaDeserializada.obtenerHectareaALaQuePertenece().obtenerCoordenada());
 			}
 		}
 	}
@@ -217,7 +217,7 @@ public class Deserializador {
 			  Ruta rutaDeserializado = null;
 			  for (String rutaADeserializar: rutas){
 				  rutaDeserializado = persistidor.deserializar(rutaADeserializar); 
-				  fachada.jugadorConstruir(rutaDeserializado,rutaDeserializado.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+				  fachada.jugadorReconstruir(rutaDeserializado,rutaDeserializado.obtenerHectareaALaQuePertenece().obtenerCoordenada());
 			  }
 		  }
 	}
@@ -231,7 +231,7 @@ public class Deserializador {
 			  LineaDeTension lineaDeserializada = null;
 			  for (String lineaADeserializar: lineas){
 				  lineaDeserializada = persistidor.deserializar(lineaADeserializar); 
-				  fachada.jugadorConstruir(lineaDeserializada,lineaDeserializada.obtenerHectareaALaQuePertenece().obtenerCoordenada());
+				  fachada.jugadorReconstruir(lineaDeserializada,lineaDeserializada.obtenerHectareaALaQuePertenece().obtenerCoordenada());
 			  }
 		  }
 	}

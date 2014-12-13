@@ -52,6 +52,12 @@ public class Jugador {
 			this.descontarDineroPorConstruir(construccion);
 		}
 	}
+	
+	public void reconstruir(Construccion construccion, Coordenada coordenada) throws NoSePuedeEdificarEnEsaZonaException{
+
+		this.partida.construir(construccion,coordenada);
+	}
+
 
 	public Partida obtenerPartida() {
 		 

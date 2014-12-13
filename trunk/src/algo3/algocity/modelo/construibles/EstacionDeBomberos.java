@@ -32,6 +32,7 @@ public class EstacionDeBomberos extends MegaConstruccion implements Entubable,El
 		this.siguienteElectrificable = null;
 		this.anteriorElectrificable = null;
 		this.enrutables = new ArrayList<Enrutable>();
+		this.porcentajeDeVida = 100;
 	}
 	
 	public int costo() {

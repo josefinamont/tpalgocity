@@ -24,6 +24,11 @@ public class Fachada {
 	  this.unJugador.construir(construccion, coordenadaDeConstruccion);
 	}
 	
+	public void jugadorReconstruir(Construccion construccion,Coordenada coordenadaDeConstruccion) throws NoSePuedeEdificarEnEsaZonaException {
+		
+		this.unJugador.reconstruir(construccion, coordenadaDeConstruccion);
+	}
+	
 	public Jugador obtenerJugador(){
 		
 		return this.unJugador;

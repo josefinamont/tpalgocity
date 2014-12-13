@@ -42,6 +42,7 @@ public class Vista {
 		 ventana.setVisible(true);
 		 ventana.getContentPane().setLayout(null);
 		 ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 this.timer = new Timer();
 	 }	
 	 
 	 public JFrame obtenerVentana(){
@@ -51,7 +52,7 @@ public class Vista {
 	 
 	 public void setPanelVistaMapaConBotones(Controlador controlador){
 		
-		 timer = new Timer();
+		 Timer timer = new Timer();
 		 timer.schedule(controlador.obtenerFachada().obtenerJugador().obtenerPartida(controlador),3000,3000);
 		 
 		 ventana.remove(panelActual);
