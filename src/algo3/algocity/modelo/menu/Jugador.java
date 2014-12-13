@@ -9,7 +9,7 @@ public class Jugador {
 
 	private int dineroEnPesos;
 	private String nombre;
-	private Partida partida;
+	private transient Partida partida;
 	
 	public Jugador() {
 		

@@ -43,6 +43,11 @@ public class Partida extends TimerTask {
 		return this.turnos == numeroDeTurno;
 	}
 	
+	public Poblacion obtenerPoblacion(){
+		
+		return this.poblacionGlobal;
+	}
+	
 	public void pasaUnTurno() {
 		
 		this.turnos++;
@@ -196,6 +201,24 @@ public class Partida extends TimerTask {
 	public int obtenerIndiceDeFelicidadGlobal() {
 		
 		return this.indiceDeFelicidadGlobal;
+	}
+
+	public void definirMapa(Mapa unMapa) {
+		
+		this.mapa = unMapa;
+		
+	}
+
+	public void definirTurnos(int turnos) {
+		
+		this.turnos = turnos;
+		
+	}
+
+	public void definirIndiceDeFelicidad(int indice) {
+		
+		this.indiceDeFelicidadGlobal = indice;
+		
 	}
 	
 }

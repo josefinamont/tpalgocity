@@ -33,7 +33,7 @@ public class Serializador {
 	ArrayList<String> bomberosSerializados;
 	ArrayList<String> pozosSerializados;
 	ArrayList<String> jugadorSerializado;
-	ArrayList<String> partidaSerializada;
+	ArrayList<String> mapaSerializado;
 	GestorArchivo gestorArchivo;
 	ArrayList<String> residencialesSerializados;
 	ArrayList<String> comercialesSerializados;
@@ -43,6 +43,9 @@ public class Serializador {
 	ArrayList<String> centralesNuclearesSerializadas;
 	ArrayList<String> nombresDeJugadoresASerializar;
 	ArrayList<String> nombresSerializados;
+	ArrayList<String> poblacionSerializada;
+	ArrayList<String> turnosSerializados;
+	ArrayList<String> indiceSerializado;
 	
 	public Serializador(Fachada fachada,ArrayList<String> nombresDeJugadores){
 		
@@ -54,7 +57,7 @@ public class Serializador {
 		this.bomberosSerializados = new ArrayList<String>();
 		this.pozosSerializados = new ArrayList<String>();
 		this.jugadorSerializado = new ArrayList<String>();
-		this.partidaSerializada = new ArrayList<String>();
+		this.mapaSerializado = new ArrayList<String>();
 		this.residencialesSerializados = new ArrayList<String>();
 		this.comercialesSerializados = new ArrayList<String>();
 		this.industrialesSerializados = new ArrayList<String>();
@@ -64,6 +67,9 @@ public class Serializador {
 		this.tuberiasDeAguaSerializadas = new ArrayList<String>();
 		this.nombresDeJugadoresASerializar = nombresDeJugadores;
 		this.nombresSerializados = new ArrayList<String>();
+		this.poblacionSerializada = new ArrayList<String>();
+		this.turnosSerializados = new ArrayList<String>(); 
+		this.indiceSerializado = new ArrayList<String>();
 	}
 	
 	public void serializarJugador() throws FileNotFoundException{
@@ -74,12 +80,42 @@ public class Serializador {
 			this.gestorArchivo.guardar(this.jugadorSerializado,this.fachada.obtenerJugador().obtenerNombre(),"jugador");
 	}
 	
-	public void serializarPartida() throws FileNotFoundException{
+	public void serializarMapa() throws FileNotFoundException{
 		
-		PersistirPartida persistidor = new PersistirPartida();
-		persistidor.serializar(fachada.obtenerJugador().obtenerPartida());
-		this.partidaSerializada.add(persistidor.obtenerSerializacion());
-		this.gestorArchivo.guardar(this.partidaSerializada,this.fachada.obtenerJugador().obtenerNombre(),"partida");
+		//PersistirPartida persistidor = new PersistirPartida();
+		//persistidor.serializar(fachada.obtenerJugador().obtenerPartida());
+		//this.partidaSerializada.add(persistidor.obtenerSerializacion());
+		//this.gestorArchivo.guardar(this.partidaSerializada,this.fachada.obtenerJugador().obtenerNombre(),"partida");
+		PersistirMapa persistidorMapa = new PersistirMapa();
+		persistidorMapa.serializar(fachada.obtenerJugador().obtenerPartida().obtenerMapa());
+		this.mapaSerializado.add(persistidorMapa.obtenerSerializacion());
+		this.gestorArchivo.guardar(this.mapaSerializado,this.fachada.obtenerJugador().obtenerNombre(),"mapa");
+		
+		
+	}
+	
+	public void serializarPoblacionGlobal() throws FileNotFoundException{
+		
+		PersistirPoblacion persistidorPoblacion = new PersistirPoblacion();
+		persistidorPoblacion.serializar(fachada.obtenerJugador().obtenerPartida().obtenerPoblacion());
+		this.poblacionSerializada.add(persistidorPoblacion.obtenerSerializacion());
+		this.gestorArchivo.guardar(this.poblacionSerializada,this.fachada.obtenerJugador().obtenerNombre(),"poblacion");
+	}
+	
+	public void serializarTurnos() throws FileNotFoundException{
+		
+		PersistirEntero persistirTurnos = new PersistirEntero();
+		persistirTurnos.serializar(fachada.obtenerJugador().obtenerPartida().obtenerTurnos());
+		this.turnosSerializados.add(persistirTurnos.obtenerSerializacion());
+		this.gestorArchivo.guardar(this.turnosSerializados,this.fachada.obtenerJugador().obtenerNombre(),"turnos");
+	}
+	
+	public void serializarIndiceDeFelicidad() throws FileNotFoundException{
+		
+		PersistirEntero persistirIndice = new PersistirEntero();
+		persistirIndice.serializar(fachada.obtenerJugador().obtenerPartida().obtenerTurnos());
+		this.turnosSerializados.add(persistirIndice.obtenerSerializacion());
+		this.gestorArchivo.guardar(this.indiceSerializado,this.fachada.obtenerJugador().obtenerNombre(),"indice");
 	}
 	
 	public void serializarMiniConstrucciones() throws FileNotFoundException{
@@ -218,7 +254,10 @@ public class Serializador {
 		this.serializarJugador();
 		this.serializarMegaConstrucciones();
 		this.serializarMiniConstrucciones();
-		this.serializarPartida();
+		this.serializarMapa();
+		this.serializarPoblacionGlobal();
+		this.serializarTurnos();
+		this.serializarIndiceDeFelicidad();
 		this.serializarPozosDeAgua();
 		this.serializarListaDeJugadores();
 	}
