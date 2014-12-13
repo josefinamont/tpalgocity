@@ -63,5 +63,10 @@ public class Jugador {
 		this.partida.definirControlador(controlador);
 		return this.partida;
 	}
+
+	public void definirPartida(Partida partidaDeserealizada) {
+		
+		this.partida = partidaDeserealizada;
+	}
 	
 }
