@@ -2,14 +2,18 @@ package algo3.algocity.controlador;
 
 import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
+import java.util.Timer;
 
 import algo3.algocity.persistencia.PersistenciaDelJuego;
 
 public class GuardarPartidaListener extends ControladorListener {
 	
-	public GuardarPartidaListener(Controlador controlador) {
+	Timer timer;
+	
+	public GuardarPartidaListener(Controlador controlador,Timer timer) {
 		
 		super(controlador);
+		this.timer = timer;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -21,6 +25,7 @@ public class GuardarPartidaListener extends ControladorListener {
 		
 		PersistenciaDelJuego persistencia = new PersistenciaDelJuego(controlador.obtenerFachada());
 		try {
+			timer.cancel();
 			persistencia.persistirTodo();
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
