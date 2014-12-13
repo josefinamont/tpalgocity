@@ -16,8 +16,10 @@ import algo3.algocity.modelo.edificios.Comercial;
 import algo3.algocity.modelo.edificios.Industrial;
 import algo3.algocity.modelo.edificios.Residencial;
 import algo3.algocity.modelo.excepciones.NoSePuedeEdificarEnEsaZonaException;
+import algo3.algocity.modelo.mapa.Mapa;
 import algo3.algocity.modelo.menu.Jugador;
 import algo3.algocity.modelo.menu.Partida;
+import algo3.algocity.modelo.menu.Poblacion;
 
 public class Deserializador {
 
@@ -54,16 +56,79 @@ public class Deserializador {
 	
 	public void deserializarPartida(){
 		
-		ArrayList<String> partida = new ArrayList<String>();
-		partida = gestorDeArchivo.levantar(nombreDelJugador,"partida");
-		if (partida != null) {
-			PersistirPartida persistidor = new PersistirPartida();
-			Partida partidaDeserealizada = null;
-			for (String partidaActual: partida){
-				partidaDeserealizada = persistidor.deserializar(partidaActual);		
+		Partida partidaDeserializada = new Partida();
+		partidaDeserializada.definirMapa(this.deserializarMapa());
+		partidaDeserializada.setearPoblacion(this.poblacionDeserializada());
+		partidaDeserializada.definirTurnos(this.turnosDeserializados());
+		partidaDeserializada.definirIndiceDeFelicidad(this.indiceDeserializado());
+		this.fachada.obtenerJugador().definirPartida(partidaDeserializada);
+		
+	}
+	
+	
+	private int turnosDeserializados() {
+		
+		ArrayList<String> turnos = new ArrayList<String>();
+		turnos = gestorDeArchivo.levantar(nombreDelJugador,"turnos");
+	
+		int turnosDeserializados = 0;
+		if (turnos != null) {
+			PersistirEntero persistidor = new PersistirEntero();
+			
+			for (String turnosActual: turnos){
+				turnosDeserializados = persistidor.deserializar(turnosActual);		
 			}
-			this.fachada.obtenerJugador().definirPartida(partidaDeserealizada);
 		}
+		return turnosDeserializados;
+	}
+
+	public Mapa deserializarMapa(){
+		
+		ArrayList<String> mapa = new ArrayList<String>();
+		mapa = gestorDeArchivo.levantar(nombreDelJugador,"mapa");
+	
+		Mapa mapaDeserializado = null;
+		if (mapa != null) {
+			PersistirMapa persistidor = new PersistirMapa();
+			
+			for (String mapaActual: mapa){
+				mapaDeserializado = persistidor.deserializar(mapaActual);		
+			}
+		}
+		return mapaDeserializado;
+	}
+	
+	public int poblacionDeserializada(){
+		
+		ArrayList<String> poblacion = new ArrayList<String>();
+		poblacion = gestorDeArchivo.levantar(nombreDelJugador,"poblacion");
+	
+		Poblacion poblacionDeserializada = null;
+		if (poblacion != null) {
+			PersistirPoblacion persistidor = new PersistirPoblacion();
+			
+			for (String poblacionActual: poblacion){
+				poblacionDeserializada = persistidor.deserializar(poblacionActual);		
+			}
+		}
+		return poblacionDeserializada.obtenerNumeroDeCuidadanos();
+	}
+	
+	public int indiceDeserializado(){
+		
+		ArrayList<String> indices = new ArrayList<String>();
+		indices = gestorDeArchivo.levantar(nombreDelJugador,"indice");
+	
+		int indiceDeserializado = 0;
+		if (indices != null) {
+			PersistirEntero persistidor = new PersistirEntero();
+			
+			for (String indiceActual: indices){
+				indiceDeserializado = persistidor.deserializar(indiceActual);		
+			}
+		}
+		return indiceDeserializado;
+		
 	}
 	
 	public void deserializarResidenciales() throws NoSePuedeEdificarEnEsaZonaException{
@@ -177,6 +242,7 @@ public class Deserializador {
 			}
 		}
 	}
+	
 	
 	public ArrayList<String> deserializarListaDeJugadores(){
 		

@@ -30,7 +30,7 @@ public class CustomKeyListenerjugadorNuevo implements KeyListener {
      
 	 if (e.getKeyCode() == KeyEvent.VK_ENTER){
      
-		  if ( (textField.getText().trim().length() != 0) || (!controlador.existeEsteJugador(textField.getText()))){
+		  if ( (textField.getText().trim().length() != 0) && (!controlador.existeEsteJugador(textField.getText()))){
 
         	  controlador.agregarJugador(textField.getText());
 			  //controlador.agregarJugadorNuevo(textField.getText());
@@ -38,7 +38,7 @@ public class CustomKeyListenerjugadorNuevo implements KeyListener {
 	      }
 	      else{
 		            	
-              statusLabel.setText("Ingrese un nombre");
+              statusLabel.setText("Ingrese un nombre valido");
           }
      }
  }

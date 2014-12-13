@@ -13,7 +13,7 @@ public class GuardarPartidaListener extends ControladorListener {
 	public GuardarPartidaListener(Controlador controlador,Timer timer) {
 		
 		super(controlador);
-		//this.timer = timer;
+		this.timer = timer;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -22,7 +22,7 @@ public class GuardarPartidaListener extends ControladorListener {
 		
 		//Jugador jugador = controlador.obtenerFachada().obtenerJugador();
 		//Partida partida = controlador.obtenerFachada().obtenerJugador().obtenerPartida();
-		//timer.cancel();
+		timer.cancel();
 		Serializador serializador = new Serializador(controlador.obtenerFachada(),controlador.obtenerNombres());
 		try {
 			//timer.cancel();

@@ -22,7 +22,7 @@ import algo3.algocity.persistencia.Deserializador;
 
 public class VistaPanelJugadorExistenteTeclado extends JPanel{
 	
-	public VistaPanelJugadorExistenteTeclado(Controlador controlador){
+	public VistaPanelJugadorExistenteTeclado(final Controlador controlador){
 		
 		   JLabel ingreseNombre;
 		   final JLabel statusLabel;
@@ -67,7 +67,7 @@ public class VistaPanelJugadorExistenteTeclado extends JPanel{
 	    		  Deserializador deserializadorDeLista = new Deserializador();
 	    		  controlador.definirListaDeJugadores(deserializadorDeLista.deserializarListaDeJugadores()); 
 	    		  
-	    		  if ( (textField.getText().trim().length() != 0) || (!controlador.existeEsteJugador(textField.getText())) ){
+	    		  if ( (textField.getText().trim().length() != 0) && (!controlador.existeEsteJugador(textField.getText())) ){
 	    			  String nombreDelJugador = textField.getText();
 	    			  Deserializador deserializador = new Deserializador(nombreDelJugador);
 	    			  try {
