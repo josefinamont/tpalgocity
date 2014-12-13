@@ -55,10 +55,11 @@ public class VistaPanelElegirJugadorNuevoTeclado extends JPanel{
 
 	    	  public void actionPerformed(ActionEvent e) {
 	    		  
-	    		  if(textField.getText().trim().length() != 0 ){
+	    		  if ( (textField.getText().trim().length() != 0) || (!controlador.existeEsteJugador(textField.getText())) ){
 	    		 
-	    			  controlador.agregarJugadorAFachadas(textField.getText());
-	    			  controlador.obtenerVista().setPanelVistaMapaConBotones(controlador);
+	    			  //controlador.agregarJugadorAFachadas(textField.getText());
+	    			  controlador.agregarJugador(textField.getText());
+	    			  controlador.setPanelVistaMapaConBotones();
 	    		  }
 	    		  if(textField.getText().trim().length() == 0 ){
 	    			  

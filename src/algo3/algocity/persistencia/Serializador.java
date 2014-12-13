@@ -41,8 +41,10 @@ public class Serializador {
 	ArrayList<String> centralesEolicasSerializadas;
 	ArrayList<String> centralesMineralesSerializadas;
 	ArrayList<String> centralesNuclearesSerializadas;
+	ArrayList<String> nombresDeJugadoresASerializar;
+	ArrayList<String> nombresSerializados;
 	
-	public Serializador(Fachada fachada){
+	public Serializador(Fachada fachada,ArrayList<String> nombresDeJugadores){
 		
 		this.fachada = fachada;
 		this.gestorArchivo = new GestorArchivo();
@@ -60,9 +62,11 @@ public class Serializador {
 		this.centralesMineralesSerializadas = new ArrayList<String>();
 		this.centralesNuclearesSerializadas = new ArrayList<String>();
 		this.tuberiasDeAguaSerializadas = new ArrayList<String>();
+		this.nombresDeJugadoresASerializar = nombresDeJugadores;
+		this.nombresSerializados = new ArrayList<String>();
 	}
 	
-	public void persistirJugador() throws FileNotFoundException{
+	public void serializarJugador() throws FileNotFoundException{
 		
 			PersistirJugador persistidor = new PersistirJugador();
 			persistidor.serializar(fachada.obtenerJugador());
@@ -70,7 +74,7 @@ public class Serializador {
 			this.gestorArchivo.guardar(this.jugadorSerializado,this.fachada.obtenerJugador().obtenerNombre(),"jugador");
 	}
 	
-	public void persistirPartida() throws FileNotFoundException{
+	public void serializarPartida() throws FileNotFoundException{
 		
 		PersistirPartida persistidor = new PersistirPartida();
 		persistidor.serializar(fachada.obtenerJugador().obtenerPartida());
@@ -78,7 +82,7 @@ public class Serializador {
 		this.gestorArchivo.guardar(this.partidaSerializada,this.fachada.obtenerJugador().obtenerNombre(),"partida");
 	}
 	
-	public void persistirMiniConstruccionesDelMapa() throws FileNotFoundException{
+	public void serializarMiniConstrucciones() throws FileNotFoundException{
 		
 		if (!this.fachada.obtenerJugador().obtenerPartida().obtenerMapa().obtenerMiniConstrucciones().isEmpty()){
 			for (MiniConstruccion miniConstruccion: this.fachada.obtenerJugador().obtenerPartida().obtenerMapa().obtenerMiniConstrucciones()){
@@ -109,7 +113,7 @@ public class Serializador {
 			}
 		}
 	}
-	public void persistirBomberos() throws FileNotFoundException{
+	public void serializarBomberos() throws FileNotFoundException{
 		
 		if (!this.fachada.obtenerJugador().obtenerPartida().obtenerMapa().obtenerEstacionDeBomberos().isEmpty()){
 			for (EstacionDeBomberos bomberos: this.fachada.obtenerJugador().obtenerPartida().obtenerMapa().obtenerEstacionDeBomberos()){
@@ -122,7 +126,7 @@ public class Serializador {
 		}
 	}
 	
-	public void persistirPozosDeAgua() throws FileNotFoundException{
+	public void serializarPozosDeAgua() throws FileNotFoundException{
 		
 		if (!this.fachada.obtenerJugador().obtenerPartida().obtenerMapa().obtenerPozos().isEmpty()) {
 			for (PozoDeAgua pozo: this.fachada.obtenerJugador().obtenerPartida().obtenerMapa().obtenerPozos()){
@@ -136,16 +140,16 @@ public class Serializador {
 	}
 	
 	
-	public void persistirMegaConstruccionesDelMapa() throws FileNotFoundException{
+	public void serializarMegaConstrucciones() throws FileNotFoundException{
 		
 		  for(MegaConstruccion construccion: this.fachada.obtenerMegaConstrucciones()){
 
-		     if(construccion.esUnaConstruccionEnergetica()){ this.persistirCentralesElectricas(construccion);} 
-		     else{ this.persistirEdificios(construccion);}
+		     if(construccion.esUnaConstruccionEnergetica()){ this.serializarCentralesElectricas(construccion);} 
+		     else{ this.serializarEdificios(construccion);}
 		  }
 	}
 
-	private void persistirEdificios(MegaConstruccion construccionASerializar) throws FileNotFoundException {
+	private void serializarEdificios(MegaConstruccion construccionASerializar) throws FileNotFoundException {
 		
 		if(construccionASerializar.tienePoblacion()){
 			
@@ -172,7 +176,7 @@ public class Serializador {
 		
 	}
 
-	private void persistirCentralesElectricas(MegaConstruccion construccionASerializar) throws FileNotFoundException {
+	private void serializarCentralesElectricas(MegaConstruccion construccionASerializar) throws FileNotFoundException {
 		
 		if(((CentralElectrica) construccionASerializar).tieneAbastecimientoEnMW(100)){
 			
@@ -197,14 +201,25 @@ public class Serializador {
 		}
 		
 	}
-
-	public void persistirTodo() throws FileNotFoundException {
+	
+	public void serializarListaDeJugadores() throws FileNotFoundException{
 		
-		this.persistirBomberos();
-		this.persistirJugador();
-		this.persistirMegaConstruccionesDelMapa();
-		this.persistirMiniConstruccionesDelMapa();
-		this.persistirPartida();
-		this.persistirPozosDeAgua();
+		PersistirListaDeJugadores persistidor = new PersistirListaDeJugadores();
+		for (String nombreASerializar: this.nombresDeJugadoresASerializar){
+			persistidor.serializar(nombreASerializar);
+			this.nombresSerializados.add(persistidor.obtenerSerializacion());
+			this.gestorArchivo.guardar(this.nombresSerializados,"lista de jugadores","jugadores");
+		}
+	}
+
+	public void serializarTodo() throws FileNotFoundException {
+		
+		this.serializarBomberos();
+		this.serializarJugador();
+		this.serializarMegaConstrucciones();
+		this.serializarMiniConstrucciones();
+		this.serializarPartida();
+		this.serializarPozosDeAgua();
+		this.serializarListaDeJugadores();
 	}
 }

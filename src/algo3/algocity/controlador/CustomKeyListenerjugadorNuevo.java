@@ -28,12 +28,13 @@ public class CustomKeyListenerjugadorNuevo implements KeyListener {
 		     
  public void keyPressed(KeyEvent e) {
      
-	 if(e.getKeyCode() == KeyEvent.VK_ENTER){
+	 if (e.getKeyCode() == KeyEvent.VK_ENTER){
      
-		  if(textField.getText().trim().length() != 0){
+		  if ( (textField.getText().trim().length() != 0) || (!controlador.existeEsteJugador(textField.getText()))){
 
-        	  controlador.agregarJugadorAFachadas(textField.getText());
-        	  controlador.obtenerVista().setPanelVistaMapaConBotones(controlador);
+        	  controlador.agregarJugador(textField.getText());
+			  //controlador.agregarJugadorNuevo(textField.getText());
+        	  controlador.setPanelVistaMapaConBotones();
 	      }
 	      else{
 		            	

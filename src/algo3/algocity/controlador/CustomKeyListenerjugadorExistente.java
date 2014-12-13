@@ -6,6 +6,9 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JLabel;
 
+import algo3.algocity.modelo.excepciones.NoSePuedeEdificarEnEsaZonaException;
+import algo3.algocity.persistencia.Deserializador;
+
  public class CustomKeyListenerjugadorExistente implements KeyListener {
 
 		JLabel statusLabel;
@@ -27,15 +30,23 @@ import javax.swing.JLabel;
      
 	 if(e.getKeyCode() == KeyEvent.VK_ENTER){
             
-		 if(textField.getText().trim().length() != 0){
-
-       	  	 controlador.agregarJugadorAFachadas(textField.getText());
-       	  	 controlador.obtenerVista().setPanelVistaMapaConBotones(controlador);
+		 if ( (textField.getText().trim().length() != 0) && (controlador.existeEsteJugador(textField.getText())) ){
+			 
+			String nombreDelJugador = textField.getText();
+			Deserializador deserializador = new Deserializador(nombreDelJugador);
+			try {
+				controlador.definirFachada(deserializador.deserializarTodo());
+			} catch (NoSePuedeEdificarEnEsaZonaException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+       	  	 //controlador.agregarJugadorAFachadas(textField.getText());
+			controlador.setPanelVistaMapaConBotones();
        	  	 //controlador.jugadorEstaEnLaLista(textField.getText());
 	      }
 	      else{
-		            	
-             statusLabel.setText("Ingrese un nombre");
+		         	
+             statusLabel.setText("Ingrese un nombre válido");
          }
         }
  }
