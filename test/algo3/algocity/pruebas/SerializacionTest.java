@@ -18,7 +18,7 @@ import algo3.algocity.modelo.menu.Poblacion;
 public class SerializacionTest {
 	
 	Fachada unaFachada;
-	Deserializador deserializador;
+	DeserializadorDePrueba deserializador;
 	SerializacionPequeñosObjetos serializador;
 	Coordenada unaCoordenada;
 	Poblacion poblacion;
@@ -27,7 +27,7 @@ public class SerializacionTest {
 	@Before
 	public void setUp() throws Exception {
 		
-		 deserializador = new Deserializador();
+		 deserializador = new DeserializadorDePrueba();
 		 unPozo = new PozoDeAgua();
 		 unaFachada = new Fachada(new Jugador());
 		 serializador = new SerializacionPequeñosObjetos();

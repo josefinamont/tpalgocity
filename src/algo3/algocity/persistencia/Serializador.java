@@ -24,7 +24,7 @@ import algo3.algocity.modelo.interfaces.Entubable;
 import algo3.algocity.modelo.interfaces.MegaConstruccion;
 import algo3.algocity.modelo.interfaces.MiniConstruccion;
 
-public class PersistenciaDelJuego {
+public class Serializador {
 
 	Fachada fachada;
 	ArrayList<String> lineasDeTensionSerializadas;
@@ -42,7 +42,7 @@ public class PersistenciaDelJuego {
 	ArrayList<String> centralesMineralesSerializadas;
 	ArrayList<String> centralesNuclearesSerializadas;
 	
-	public PersistenciaDelJuego(Fachada fachada){
+	public Serializador(Fachada fachada){
 		
 		this.fachada = fachada;
 		this.gestorArchivo = new GestorArchivo();
