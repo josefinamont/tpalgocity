@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import algo3.algocity.controlador.Controlador;
 import algo3.algocity.controlador.CustomKeyListenerjugadorExistente;
 import algo3.algocity.controlador.CustomKeyListenerjugadorNuevo;
+import algo3.algocity.modelo.excepciones.NoSePuedeEdificarEnEsaZonaException;
 import algo3.algocity.persistencia.Deserializador;
 
 public class VistaPanelJugadorExistenteTeclado extends JPanel{
@@ -26,6 +27,7 @@ public class VistaPanelJugadorExistenteTeclado extends JPanel{
 		   JLabel ingreseNombre;
 		   final JLabel statusLabel;
 		   final TextField textField;
+		   final JLabel nombresJugadoresExistentes = new JLabel();
 		   JLabel titulo = new JLabel("Algo City");
 		   titulo.setFont(new java.awt.Font("Verdana", 0, 100));;
 		   titulo.setForeground(Color.BLUE);
@@ -39,6 +41,8 @@ public class VistaPanelJugadorExistenteTeclado extends JPanel{
 	       this.setBounds(0,0,750,750);
 	       this.add(ingreseNombre);
 	       this.add(statusLabel);
+	       this.add(nombresJugadoresExistentes);
+	       nombresJugadoresExistentes.setForeground(Color.white);
 	       ingreseNombre.setText("Jugador existente:");  
 	       ingreseNombre.setFont(new java.awt.Font("Verdana", 0, 20)); 
 	       textField = new TextField(40);
@@ -53,19 +57,25 @@ public class VistaPanelJugadorExistenteTeclado extends JPanel{
 	       this.add(textField);
 	       this.add(okButton);   
 	       this.add(botonVolverAJugadorNuevoOExistente);
+	       controlador.llenarLabelConNombres(nombresJugadoresExistentes);
 	     
 	       okButton.addActionListener(new ActionListener() {
 
 	    	  public void actionPerformed(ActionEvent e) {
 	    		  
-	    		  if(textField.getText().trim().length() != 0 ){
+	    		  Deserializador deserializadorDeLista = new Deserializador();
+	    		  controlador.definirListaDeJugadores(deserializadorDeLista.deserializarListaDeJugadores()); 
+	    		  
+	    		  if ( (textField.getText().trim().length() != 0) || (!controlador.existeEsteJugador(textField.getText())) ){
 	    			  String nombreDelJugador = textField.getText();
 	    			  Deserializador deserializador = new Deserializador(nombreDelJugador);
-	    			  
-	    			  controlador.agregarJugadorAFachadas(textField.getText());
-	    			  controlador.obtenerVista().setPanelVistaMapaConBotones(controlador);
-	    			  
-	    			  //controlador.jugadorEstaEnLaLista(textField.getText());
+	    			  try {
+						controlador.definirFachada(deserializador.deserializarTodo());
+						controlador.setPanelVistaMapaConBotones();
+					} catch (NoSePuedeEdificarEnEsaZonaException e1) {
+						e1.printStackTrace();
+					}
+	    			  //controlador.setPanelVistaMapaConBotones();
 	    		  } else { statusLabel.setText("Ingrese un nombre"); } 	  
 	    	}
 	       } 

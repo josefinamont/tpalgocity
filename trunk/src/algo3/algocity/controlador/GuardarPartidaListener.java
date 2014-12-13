@@ -23,12 +23,11 @@ public class GuardarPartidaListener extends ControladorListener {
 		//Jugador jugador = controlador.obtenerFachada().obtenerJugador();
 		//Partida partida = controlador.obtenerFachada().obtenerJugador().obtenerPartida();
 		
-		Serializador persistencia = new Serializador(controlador.obtenerFachada());
+		Serializador serializador = new Serializador(controlador.obtenerFachada(),controlador.obtenerNombres());
 		try {
 			timer.cancel();
-			persistencia.persistirTodo();
+			serializador.serializarTodo();
 		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		controlador.obtenerVista().volverAPanelBienvenida(controlador);

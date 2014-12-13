@@ -24,23 +24,26 @@ import java.util.Scanner;
 	public ArrayList<String> levantar(String nombreCarpeta,String nombreArchivo){
 		
 		ArrayList<String> retorno = new ArrayList<String>();
-		
-	     File f = new File(nombreCarpeta+"/" + nombreArchivo+".txt");
-	        String cadena;
-	        Scanner entrada = null;
-	        try {
-	            entrada = new Scanner(f);
-	            while (entrada.hasNext()) {
-	                
-	            	cadena = entrada.nextLine();
-	                retorno.add(cadena);
-	            }
-	        } catch (FileNotFoundException e) {
-	            System.out.println(e.getMessage());
-	        } finally{
-	            entrada.close();
-	        }  
-	     return retorno;
+	    File f = new File(nombreCarpeta+"/" + nombreArchivo+".txt");
+	    if (f.exists()) {
+		    String cadena;
+		    Scanner entrada = null;
+		    
+		    try {
+		    	entrada = new Scanner(f);
+		        while (entrada.hasNext()) {
+		        	cadena = entrada.nextLine();
+		            retorno.add(cadena);
+		        }
+		        entrada.close();
+		     } catch (FileNotFoundException e) {
+		            System.out.println(e.getMessage());
+		        //} finally {
+		            //entrada.close();
+		        }  
+		    //entrada.close();
+		     return retorno;
+	    } else return null;
 	}
 	
 	public void guardar(ArrayList<String> lista,String nombreCarpeta,String nombreArchivo) throws FileNotFoundException{

@@ -293,7 +293,7 @@ public class Vista {
 	     	 
 	    	public void actionPerformed(ActionEvent e) {
 	    	
-	       	  controlador.agregarJugadorAFachadas(textField.getText());
+	       	  controlador.agregarJugador(textField.getText());
 	   		  controlador.obtenerVista().setPanelVistaMapaConBotones(controlador);
 	   		}
 	   });

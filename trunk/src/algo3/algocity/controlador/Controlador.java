@@ -5,7 +5,10 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Timer;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import algo3.algocity.modelo.Fachada;
 import algo3.algocity.modelo.excepciones.NoSePuedeEdificarEnEsaZonaException;
@@ -20,12 +23,13 @@ import algo3.algocity.vista.Vista;
 		Fachada fachadaActual;
 		ArrayList<Fachada> fachadas = new ArrayList<Fachada>();
 		Construccion construccionAConstruir;
+		ArrayList<String> nombresDeJugadores;
 	
 	public Controlador() {
 
 		this.vista = new Vista();
-		
 		this.construccionAConstruir = null;
+		this.nombresDeJugadores = new ArrayList<String>();
 	}
 	
 	public void definirVista(Vista vista){
@@ -50,8 +54,9 @@ import algo3.algocity.vista.Vista;
 		return this.fachadaActual;
 	}
 	
-	public void agregarJugadorAFachadas(String nombreJugador){
-		 
+	public void agregarJugador(String nombreJugador){
+		
+		this.nombresDeJugadores.add(nombreJugador);
 	 	Jugador unJugador = new Jugador(nombreJugador);
 	 	fachadaActual = new Fachada(unJugador);
 		fachadas.add(fachadaActual);
@@ -198,11 +203,56 @@ import algo3.algocity.vista.Vista;
 		vista.setPanelBienvenida(this);
 	}
 	
-	public boolean jugadorEstaEnLaLista(String nombreIngresado) {
+	/*public boolean jugadorEstaEnLaLista(String nombreIngresado) {
 		
 		for (Fachada fachada: this.fachadas){
 			if (nombreIngresado == fachada.obtenerJugador().obtenerNombre()) { return true; }
 		}
 		return false;
+	}*/
+
+	public void definirFachada(Fachada unaFachada) {
+		
+		this.fachadaActual = unaFachada;
 	}
+
+	public void setPanelVistaMapaConBotones() {
+		
+		this.obtenerVista().setPanelVistaMapaConBotones(this);
+	}
+	
+	public ArrayList<String> obtenerNombres(){
+		
+		return this.nombresDeJugadores;
+	}
+	
+	public boolean existeEsteJugador(String unNombre){
+		
+		for(String nombre : this.nombresDeJugadores){
+		   if( nombre == unNombre ){ return true; }
+		}
+		return false;
+	}
+
+	public void llenarLabelConNombres(JLabel nombresJugadoresExistentesLabel) {
+		
+		String dato = null; 
+		
+		for(String nombre : this.nombresDeJugadores){
+		   dato += "    Jugador:" + nombre + '\n';
+		}
+		
+		nombresJugadoresExistentesLabel.setText(dato);
+	}
+
+	/*public void agregarJugadorNuevo(String nombreDelJugador) {
+		
+		this.nombresDeJugadores.add(nombreDelJugador);
+	}*/
+
+	public void definirListaDeJugadores(ArrayList<String> listaDeJugadoresDeserealizada) {
+	
+		this.nombresDeJugadores = listaDeJugadoresDeserealizada;
+	}
+	
 }
