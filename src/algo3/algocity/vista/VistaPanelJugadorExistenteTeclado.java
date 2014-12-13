@@ -61,11 +61,14 @@ public class VistaPanelJugadorExistenteTeclado extends JPanel{
 	    		 
 	    			  controlador.agregarJugadorAFachadas(textField.getText());
 	    			  controlador.obtenerVista().setPanelVistaMapaConBotones(controlador);
+	    			  //controlador.jugadorEstaEnLaLista(textField.getText());
 	    		  }
 	    		  if(textField.getText().trim().length() == 0 ){
 	    			  
 	    			  statusLabel.setText("Ingrese un nombre");
 	    		  }
+	    		  
+	    		  
 	    	}
 	       } 
 	       );

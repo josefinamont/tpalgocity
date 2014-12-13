@@ -21,7 +21,7 @@ public class Mapa {
 	private transient ArrayList<EstacionDeBomberos> bomberos = new ArrayList<EstacionDeBomberos>();
 	private transient ArrayList<PozoDeAgua> pozos = new ArrayList<PozoDeAgua>();
 	private Coordenada coordenadaDeLaCatastrofe;
-	private Catastrofe catastrofe;
+	private transient Catastrofe catastrofe;
 	private boolean estadoMovimientoCatastrofe;
 	
 	public Mapa(){

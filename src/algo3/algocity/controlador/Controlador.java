@@ -20,7 +20,7 @@ import algo3.algocity.vista.Vista;
 	public class Controlador {
 		
 		Vista vista;
-		Fachada fachada;
+		Fachada fachadaActual;
 		ArrayList<Fachada> fachadas = new ArrayList<Fachada>();
 		Construccion construccionAConstruir;
 	
@@ -39,7 +39,7 @@ import algo3.algocity.vista.Vista;
 	public void construirEnElMapa(Coordenada coordenada) throws NoSePuedeEdificarEnEsaZonaException{
 		
 		if(this.construccionAConstruir != null)
-			this.fachada.jugadorConstruir(this.construccionAConstruir.generarNuevaInstancia(), coordenada);
+			this.fachadaActual.jugadorConstruir(this.construccionAConstruir.generarNuevaInstancia(), coordenada);
 		 	this.notificarUsuario("Construccion exitosa.");
 	}
 	
@@ -50,14 +50,14 @@ import algo3.algocity.vista.Vista;
 	
 	public Fachada obtenerFachada(){
 		
-		return this.fachada;
+		return this.fachadaActual;
 	}
 	
 	public void agregarJugadorAFachadas(String nombreJugador){
 		 
 	 	Jugador unJugador = new Jugador(nombreJugador);
-	 	fachada = new Fachada(unJugador);
-		fachadas.add(fachada);
+	 	fachadaActual = new Fachada(unJugador);
+		fachadas.add(fachadaActual);
 	}
 	
 	public Vista obtenerVista(){
@@ -142,7 +142,7 @@ import algo3.algocity.vista.Vista;
 	
 	public MouseListener obtenerClickSobreElMapaListener() {
 		
-		return new ClickSobreElMapaListener(this,this.fachada.obtenerJugador().obtenerPartida().obtenerMapa());
+		return new ClickSobreElMapaListener(this,this.fachadaActual.obtenerJugador().obtenerPartida().obtenerMapa());
 	}
 	
 	public void notificarUsuario(String mensaje){
@@ -193,11 +193,19 @@ import algo3.algocity.vista.Vista;
 
 	public void pagarAlJugador() {
 		
-		fachada.obtenerJugador().cobrarPorCiudadano();
+		fachadaActual.obtenerJugador().cobrarPorCiudadano();
 	}
 	
 	public void iniciar(){
 		
 		vista.setPanelBienvenida(this);
+	}
+	
+	public boolean jugadorEstaEnLaLista(String nombreIngresado) {
+		
+		for (Fachada fachada: this.fachadas){
+			if (nombreIngresado == fachada.obtenerJugador().obtenerNombre()) { return true; }
+		}
+		return false;
 	}
 }
