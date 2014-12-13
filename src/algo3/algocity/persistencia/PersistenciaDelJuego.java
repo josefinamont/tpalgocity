@@ -27,25 +27,39 @@ import algo3.algocity.modelo.interfaces.MiniConstruccion;
 public class PersistenciaDelJuego {
 
 	Fachada fachada;
-	ArrayList<String> miniConstruccionesSerializadas;
-	ArrayList<String> megaConstruccionesSerializadas;
+	ArrayList<String> lineasDeTensionSerializadas;
+	ArrayList<String> rutasSerializadas;
+	ArrayList<String> tuberiasDeAguaSerializadas;
 	ArrayList<String> bomberosSerializados;
 	ArrayList<String> pozosSerializados;
 	ArrayList<String> jugadorSerializado;
 	ArrayList<String> partidaSerializada;
 	GestorArchivo gestorArchivo;
+	ArrayList<String> residencialesSerializados;
+	ArrayList<String> comercialesSerializados;
+	ArrayList<String> industrialesSerializados;
+	ArrayList<String> centralesEolicasSerializadas;
+	ArrayList<String> centralesMineralesSerializadas;
+	ArrayList<String> centralesNuclearesSerializadas;
 	
 	public PersistenciaDelJuego(Fachada fachada){
 		
 		this.fachada = fachada;
 		this.gestorArchivo = new GestorArchivo();
 		this.gestorArchivo.crearCarpeta(this.fachada.obtenerJugador().obtenerNombre());
-		this.miniConstruccionesSerializadas = new ArrayList<String>();
-		this.megaConstruccionesSerializadas = new ArrayList<String>();
+		this.lineasDeTensionSerializadas = new ArrayList<String>();
+		this.rutasSerializadas = new ArrayList<String>();
 		this.bomberosSerializados = new ArrayList<String>();
 		this.pozosSerializados = new ArrayList<String>();
 		this.jugadorSerializado = new ArrayList<String>();
 		this.partidaSerializada = new ArrayList<String>();
+		this.residencialesSerializados = new ArrayList<String>();
+		this.comercialesSerializados = new ArrayList<String>();
+		this.industrialesSerializados = new ArrayList<String>();
+		this.centralesEolicasSerializadas = new ArrayList<String>();
+		this.centralesMineralesSerializadas = new ArrayList<String>();
+		this.centralesNuclearesSerializadas = new ArrayList<String>();
+		this.tuberiasDeAguaSerializadas = new ArrayList<String>();
 	}
 	
 	public void persistirJugador() throws FileNotFoundException{
@@ -73,24 +87,26 @@ public class PersistenciaDelJuego {
 				if (miniConstruccion.conectarseA(unElectrificable)) { 
 					PersistirLineaDeTension persistidor = new PersistirLineaDeTension();
 					persistidor.serializar((LineaDeTension) miniConstruccion);
-					this.miniConstruccionesSerializadas.add(persistidor.obtenerSerializacion());
+					this.lineasDeTensionSerializadas.add(persistidor.obtenerSerializacion());
+					this.gestorArchivo.guardar(this.lineasDeTensionSerializadas,this.fachada.obtenerJugador().obtenerNombre(),"lineas de tension");
 				}
 				
 				Entubable unEntubable = null;
 				if (miniConstruccion.conectarseA(unEntubable)) { 
 					PersistirTuberiaDeAgua persistidor = new PersistirTuberiaDeAgua();
 					persistidor.serializar((TuberiaDeAgua) miniConstruccion);
-					this.miniConstruccionesSerializadas.add(persistidor.obtenerSerializacion());
+					this.tuberiasDeAguaSerializadas.add(persistidor.obtenerSerializacion());
+					this.gestorArchivo.guardar(this.tuberiasDeAguaSerializadas,this.fachada.obtenerJugador().obtenerNombre(),"tuberias de agua");
 				}
 				
 				Enrutable unEnrutable = null;
 				if (miniConstruccion.conectarseA(unEnrutable)) { 
 					PersistirRuta persistidor = new PersistirRuta();
 					persistidor.serializar((Ruta) miniConstruccion);
-					this.miniConstruccionesSerializadas.add(persistidor.obtenerSerializacion());
+					this.rutasSerializadas.add(persistidor.obtenerSerializacion());
+					this.gestorArchivo.guardar(this.rutasSerializadas,this.fachada.obtenerJugador().obtenerNombre(),"rutas");
 				}
 			}
-			this.gestorArchivo.guardar(this.miniConstruccionesSerializadas,this.fachada.obtenerJugador().obtenerNombre(),"miniconstrucciones");
 		}
 	}
 	public void persistirBomberos() throws FileNotFoundException{
@@ -127,51 +143,57 @@ public class PersistenciaDelJuego {
 		     if(construccion.esUnaConstruccionEnergetica()){ this.persistirCentralesElectricas(construccion);} 
 		     else{ this.persistirEdificios(construccion);}
 		  }
-		  this.gestorArchivo.guardar(this.megaConstruccionesSerializadas,this.fachada.obtenerJugador().obtenerNombre(),"megaConstrucciones");
 	}
 
-	private void persistirEdificios(MegaConstruccion construccionASerializar) {
+	private void persistirEdificios(MegaConstruccion construccionASerializar) throws FileNotFoundException {
 		
 		if(construccionASerializar.tienePoblacion()){
 			
 			PersistirResidencial persistidor = new PersistirResidencial();
 			persistidor.serializar((Residencial) construccionASerializar);
-			this.megaConstruccionesSerializadas.add(persistidor.obtenerSerializacion());
+			this.residencialesSerializados.add(persistidor.obtenerSerializacion());
+			this.gestorArchivo.guardar(this.residencialesSerializados,this.fachada.obtenerJugador().obtenerNombre(),"residenciales");
+			
 		}else{
 			if(((Edificio) construccionASerializar).tieneEmpleo()){
 				
 				PersistirIndustrial persistidor = new PersistirIndustrial();
 				persistidor.serializar((Industrial) construccionASerializar);
-				this.megaConstruccionesSerializadas.add(persistidor.obtenerSerializazion());
+				this.industrialesSerializados.add(persistidor.obtenerSerializazion());
+				this.gestorArchivo.guardar(this.industrialesSerializados,this.fachada.obtenerJugador().obtenerNombre(),"industriales");
 			}else{
 			
 				PersistirComercial persistidor =  new PersistirComercial();
 				persistidor.serializar((Comercial) construccionASerializar);
-				this.megaConstruccionesSerializadas.add(persistidor.obtenerSerializacion());
+				this.comercialesSerializados.add(persistidor.obtenerSerializacion());
+				this.gestorArchivo.guardar(this.comercialesSerializados,this.fachada.obtenerJugador().obtenerNombre(),"comerciales");
 			}
 		}
 		
 	}
 
-	private void persistirCentralesElectricas(MegaConstruccion construccionASerializar) {
+	private void persistirCentralesElectricas(MegaConstruccion construccionASerializar) throws FileNotFoundException {
 		
 		if(((CentralElectrica) construccionASerializar).tieneAbastecimientoEnMW(100)){
 			
 			PersistirCentralEolica persistidor = new PersistirCentralEolica();
 			persistidor.serializar((CentralEolica) construccionASerializar);
-			this.megaConstruccionesSerializadas.add(persistidor.obtenerSerializazion());
+			this.centralesEolicasSerializadas.add(persistidor.obtenerSerializazion());
+			this.gestorArchivo.guardar(this.centralesEolicasSerializadas,this.fachada.obtenerJugador().obtenerNombre(),"centrales eolicas");
 		}	
 		if(((CentralElectrica) construccionASerializar).tieneAbastecimientoEnMW(400)){
 		
 			PersistirCentralMineral persistidor = new PersistirCentralMineral();
 			persistidor.serializar((CentralMineral) construccionASerializar);
-			this.megaConstruccionesSerializadas.add(persistidor.obtenerSerializazion());
+			this.centralesMineralesSerializadas.add(persistidor.obtenerSerializazion());
+			this.gestorArchivo.guardar(this.centralesMineralesSerializadas,this.fachada.obtenerJugador().obtenerNombre(),"centrales minerales");
 		}
 		if(((CentralElectrica) construccionASerializar).tieneAbastecimientoEnMW(1000)){
 			
 			PersistirCentralNuclear persistidor = new PersistirCentralNuclear();
 			persistidor.serializar((CentralNuclear) construccionASerializar);
-			this.megaConstruccionesSerializadas.add(persistidor.obtenerSerializazion());
+			this.centralesNuclearesSerializadas.add(persistidor.obtenerSerializazion());
+			this.gestorArchivo.guardar(this.centralesNuclearesSerializadas,this.fachada.obtenerJugador().obtenerNombre(),"centrales nucleares");
 		}
 		
 	}
