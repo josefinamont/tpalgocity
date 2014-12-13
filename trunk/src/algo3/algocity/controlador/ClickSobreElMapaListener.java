@@ -29,7 +29,7 @@ public class ClickSobreElMapaListener implements MouseListener {
 		Coordenada posicionDeClick = obtenerCoordenadaDondeSeClickeo(args);
 		
 		if(args.getButton() == MouseEvent.BUTTON3){
-			
+			// SI SE APRETA EL BOTON DERECHO SOBRE UNA CONSTRUCCION ESTA MOSTRARA SU POCENTAJE DE VIDA
 		 	Hectarea hectarea = mapa.obtenerUnSectorDelMapa(posicionDeClick);
 			
 			if(hectarea.obtenerMegaConstruccion() != null){
