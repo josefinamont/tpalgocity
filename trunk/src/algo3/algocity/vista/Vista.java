@@ -209,6 +209,7 @@ public class Vista {
 		panelBotones.add(labelControles);
 	
 		JButton botonGuardarPartida = new JButton("Guardar partida");
+		timer.cancel();
 		botonGuardarPartida.addActionListener(controlador.obtenerGuardarPartidaListener());
 		panelBotones.add(botonGuardarPartida);
 		

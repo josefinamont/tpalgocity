@@ -21,4 +21,9 @@ public class PersistirJugador {
 		 return jugador;
 	}
 
+	public String obtenerSerializacion() {
+		
+		return this.representacionJSON;
+	}
+
 }

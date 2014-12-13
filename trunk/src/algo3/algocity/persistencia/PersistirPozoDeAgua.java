@@ -20,4 +20,9 @@ public class PersistirPozoDeAgua {
 			
 		 return pozo;
 	}
+
+	public String obtenerSerializacion() {
+		
+		return this.representacionJSON;
+	}
 }
