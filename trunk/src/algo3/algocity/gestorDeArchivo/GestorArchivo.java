@@ -39,17 +39,13 @@ import java.util.Scanner;
 		        entrada.close();
 		     } catch (FileNotFoundException e) {
 		            System.out.println(e.getMessage());
-		        //} finally {
-		            //entrada.close();
 		        }  
-		    //entrada.close();
 		     return retorno;
 	    } else return null;
 	}
 	
 	public void guardar(ArrayList<String> lista,String nombreCarpeta,String nombreArchivo) throws FileNotFoundException{
 		
-		Scanner sca = new Scanner(System.in);
 		PrintWriter entrada = null;
 		
 		entrada = new PrintWriter(nombreCarpeta + "/" + nombreArchivo+".txt");
@@ -65,36 +61,18 @@ import java.util.Scanner;
 		  
 		 FileWriter fout = new FileWriter(nombreCarpeta + "/" + nombreArchivo+".txt",true);
 		 PrintWriter fileout = new PrintWriter(fout,true);
+		 fileout.write(nuevoNombre + "\n");
 		 fileout.println(nuevoNombre);
 		 fileout.close();
 		 }
 	
-	public void guardarListaString(ArrayList<String> nuevoNombre,String nombreCarpeta,String nombreArchivo) throws IOException{
+	public void guardarListaString(ArrayList<String> nuevosNombres,String nombreCarpeta,String nombreArchivo) throws IOException{
 		  
 		 FileWriter fout = new FileWriter(nombreCarpeta + "/" + nombreArchivo+".txt",true);
 		 PrintWriter fileout = new PrintWriter(fout,true);
-		 for(String texto : nuevoNombre){
-			fileout.println(nuevoNombre);
+		 for(String texto : nuevosNombres){
+			fileout.println(texto +"\n");
 		 }
 		 fileout.close();
 		 }
-	
-	public static void main(String[] args) throws IOException {
-		
-		GestorArchivo arch = new GestorArchivo();
-
-		ArrayList<String> textos = new ArrayList<String>();
-		textos.add("uno");
-		textos.add("dos");
-		textos.add("tres");
-		
-		String nombreCarpeta= "mouse";
-		String nombreTxt = "cris";
-		
-		arch.crearCarpeta(nombreCarpeta);
-		
-		arch.guardar(textos,nombreCarpeta,nombreTxt);
-		
-		//System.out.println(arch.convertir(nombreCarpeta,nombreTxt));
-	}
 }
