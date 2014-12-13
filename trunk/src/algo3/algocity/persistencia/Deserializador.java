@@ -9,8 +9,10 @@ import java.lang.reflect.Type;
 import com.google.gson.Gson;
 
 import algo3.algocity.modelo.construibles.PozoDeAgua;
+import algo3.algocity.modelo.edificios.Comercial;
 import algo3.algocity.modelo.mapa.Coordenada;
 import algo3.algocity.modelo.menu.Poblacion;
+import algo3.algocity.modelo.mapa.*;
 
 public class Deserializador {
 	
@@ -40,6 +42,20 @@ public class Deserializador {
 		 Coordenada coordenada = gson.fromJson(objetoSerializado,Coordenada.class);
 		
 		 return coordenada;
+	}
+
+	public Comercial deserializarComercial(String objetoSerializado) {
+		
+		 Comercial comercial = gson.fromJson(objetoSerializado,Comercial.class);
+			
+		 return comercial;
+	}
+
+	public Mapa deserializarUnMapa(String objetoSerializado) {
+		
+		Mapa unMapa = gson.fromJson(objetoSerializado,Mapa.class);
+		
+		return unMapa;
 	}
 	
 }

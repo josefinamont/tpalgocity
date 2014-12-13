@@ -21,5 +21,9 @@ public class PersistirIndustrial {
 		 return industrial;
 	}
 
+	public String obtenerSerializazion() {
+		
+		return this.representacionJSON;
+	}
 
 }

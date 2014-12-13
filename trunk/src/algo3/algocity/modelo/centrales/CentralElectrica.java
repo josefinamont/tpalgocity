@@ -180,4 +180,14 @@ public abstract class CentralElectrica extends MegaConstruccion
 		return (this.siguienteEnrutable != null);
 	}
 	
+	public boolean esUnaConstruccionEnergetica(){
+		
+		return true;
+	}
+	
+	public boolean tieneAbastecimientoEnMW(int numero){
+		
+		return (this.abastecimientoEnMW == numero);
+	}
+	
 }  

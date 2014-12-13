@@ -160,6 +160,10 @@ public class Residencial extends Edificio {
 		   
 		   return new Residencial();
 	   }
+	public boolean tieneEmpleo(){
+		
+		return false;
+	}
 	 
 	public void dibujarse(Graphics g,Coordenada coordenadaDimensionada) {
 	

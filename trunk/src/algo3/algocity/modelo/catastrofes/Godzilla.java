@@ -17,12 +17,14 @@ public class Godzilla implements Catastrofe {
 	private transient int tamañoEnHa;
 	private int[] patronDeMovimiento;
 	
-	public Godzilla(){}
-	
 	public Godzilla(Strategy estrategia) {
 		
 		this.tamañoEnHa = 1;
 		patronDeMovimiento = estrategia.caminar();
+	}
+
+	public Godzilla() {
+
 	}
 
 	public void destruirEstructura(Dañable unDañable) {

@@ -21,5 +21,10 @@ public class PersistirCentralNuclear {
 		 return central;
 	}
 
+	public String obtenerSerializazion() {
+		
+		return representacionJSON;
+	}
+
 
 }
