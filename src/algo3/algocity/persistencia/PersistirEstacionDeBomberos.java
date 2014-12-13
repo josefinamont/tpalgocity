@@ -16,9 +16,9 @@ public class PersistirEstacionDeBomberos {
 		
 	public EstacionDeBomberos deserializar(String objetoSerializado) {
 			
-		EstacionDeBomberos central = gson.fromJson(objetoSerializado,EstacionDeBomberos.class);
+		EstacionDeBomberos bomberos = gson.fromJson(objetoSerializado,EstacionDeBomberos.class);
 				
-		 return central;
+		 return bomberos;
 	}
 
 	public String obtenerSerializacion() {

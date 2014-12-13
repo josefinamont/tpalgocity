@@ -8,8 +8,6 @@ import java.util.Timer;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
-
 import algo3.algocity.modelo.Fachada;
 import algo3.algocity.modelo.excepciones.NoSePuedeEdificarEnEsaZonaException;
 import algo3.algocity.modelo.interfaces.Construccion;
