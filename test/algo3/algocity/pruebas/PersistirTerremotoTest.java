@@ -24,11 +24,11 @@ public class PersistirTerremotoTest {
 	public void persistiendoUnTerremoto(){
 		
 		persistidor.serializar(terremoto);
-		assertEquals("{}",persistidor.obtenerSerializacion());
+		assertEquals("{\"duracionEnTurnos\":0}",persistidor.obtenerSerializacion());
 		
 		Terremoto nuevoTerremoto = persistidor.deserializar(persistidor.obtenerSerializacion());
 		
-		//assertEquals(terremoto.porcentajeDeVida(),nuevoTerremoto.porcentajeDeVida());
+		assertEquals(terremoto.duracionEnTurnos(),nuevoTerremoto.duracionEnTurnos());
 	}
 
 
