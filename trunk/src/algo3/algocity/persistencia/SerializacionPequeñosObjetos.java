@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 
 public class SerializacionPequeñosObjetos {
 	
-	ArrayList<String>coordenadasSerializadas;
+	ArrayList<String> coordenadasSerializadas;
 	String representacionJSON = null;
 	Gson gson = new Gson();
 	
@@ -21,10 +21,12 @@ public class SerializacionPequeñosObjetos {
 		
 		representacionJSON = gson.toJson(unObjeto);
 	}
+	
 	public String obtenerSerializacion() {
 		
 		return this.representacionJSON;
 	}
+	
 	public void serializarCoordenadasDeLasMegaConstruccionesDelMapa(ArrayList<MegaConstruccion> megaConstrucciones) {
 		
 		String representacionActual = new String();
