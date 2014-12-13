@@ -17,6 +17,8 @@ public class Godzilla implements Catastrofe {
 	private transient int tamañoEnHa;
 	private int[] patronDeMovimiento;
 	
+	public Godzilla(){}
+	
 	public Godzilla(Strategy estrategia) {
 		
 		this.tamañoEnHa = 1;
