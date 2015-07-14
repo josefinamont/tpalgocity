@@ -7,5 +7,8 @@
 	<classpathentry kind="lib" path="C:/Users/ADMIN/Desktop/gson-2.2.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/ADMIN/Desktop/gson-2.2.4-javadoc.jar"/>
 	<classpathentry kind="lib" path="C:/Users/ADMIN/Desktop/gson-2.2.4-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ADMIN/Downloads/google-gson-2.2.4/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ADMIN/Downloads/google-gson-2.2.4/gson-2.2.4-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ADMIN/Downloads/google-gson-2.2.4/gson-2.2.4-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -62,7 +62,7 @@ import java.util.Scanner;
 		 FileWriter fout = new FileWriter(nombreCarpeta + "/" + nombreArchivo+".json",true);
 		 PrintWriter fileout = new PrintWriter(fout,true);
 		 fileout.write(nuevoNombre + "\n");
-		 fileout.println(nuevoNombre);
+		 //fileout.write(nuevoNombre);
 		 fileout.close();
 		 }
 	
@@ -71,8 +71,24 @@ import java.util.Scanner;
 		 FileWriter fout = new FileWriter(nombreCarpeta + "/" + nombreArchivo+".json",true);
 		 PrintWriter fileout = new PrintWriter(fout,true);
 		 for(String texto : nuevosNombres){
-			fileout.println(texto +"\n");
+			fileout.write(texto +"\n");
 		 }
 		 fileout.close();
-		 }
+	}
+	
+	public void guardarrString(String nuevoNombre) throws IOException{
+		
+		File f = new File("lista de jugadores"+"/" + "jugadores"+".json");
+		//File TextFile = new File("c:/mostro/EstadoVentanilla.txt"); 
+		//FileWriter TextOut = new FileWriter(TextFile, true);
+		//TextOut.write("Prueba de Grabación de Archivo_4\r\n");
+		//TextOut.close();
+		if (f.exists()) {
+			FileWriter text = new FileWriter(f,true);
+			//PrintWriter fileout = new PrintWriter(f,true);
+			text.write(nuevoNombre + "\n");
+			text.close();
+		}
+	}
+	
 }

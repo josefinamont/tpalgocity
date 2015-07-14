@@ -201,14 +201,6 @@ import algo3.algocity.vista.Vista;
 		
 		vista.setPanelBienvenida(this);
 	}
-	
-	/*public boolean jugadorEstaEnLaLista(String nombreIngresado) {
-		
-		for (Fachada fachada: this.fachadas){
-			if (nombreIngresado == fachada.obtenerJugador().obtenerNombre()) { return true; }
-		}
-		return false;
-	}*/
 
 	public void definirFachada(Fachada unaFachada) {
 		
